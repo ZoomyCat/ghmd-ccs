@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+##Created by Edward "edge226" Tunnah.
+
+## The script converts github markdown into html that can be pasted into the index-template.html to be able
+## to easily update and modify the website or potentially multiple websites.
+## It convers README.md to a README.mu
+## It requires the github-markup command.
+
+OPTIND=1 ## make sure the optargs are reset for getopts
+
+while getopts "n:h" opt; do
+    case "$opt" in
+        n)    page=$OPTARG;;
+        h)      printf '%s\n' "$checklinks_usage"; exit 0;;
+        \?)     printf '%s\n' "$checklinks_usage" >&2; exit 1;;
+    esac
+done
+
+write_mu(){ ## Safely writes the .mu (markup) version of the markdown.
+  if [[ -f ./README.md ]]
+    then
+    github-markup README.md > README.mu
+  fi
+}
+
+main(){
+if [[ "$page" != "" ]]
+  ## Checks to see if the page name has been set, finds the directory, enters it then writes the markup file.
+  then
+  local loc=$( find  ../ -name "$page" -type d -print0 )
+  if [[ -d "$loc"  ]]
+    then
+    cd "$loc" | exit
+    write_mu
+  fi
+else
+  ## Goto the index directory and write the index markup file.
+  cd ../ | exit
+  write_mu
+fi
+}
+
+main

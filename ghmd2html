@@ -43,8 +43,7 @@ if [[ "$page" != "" ]]
     write_mu
   fi
 else
-  ## Goto the index directory and write the index markup file.
-  cd ../ | exit
+  ## Goto the mu file in the current directory.
   write_mu
 fi
 }

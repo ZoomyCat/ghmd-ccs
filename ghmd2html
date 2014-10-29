@@ -16,10 +16,9 @@ source "$usage"
 
 OPTIND=1 ## make sure the optargs are reset for getopts
 
-while getopts "l:m:d:n:h" opt; do
+while getopts "l:d:n:h" opt; do
     case "$opt" in
         n)    page=$OPTARG;;
-        m)   mu=$OPTARG;;
         d)    md=$OPTARG;;
         l)     loc=$OPTARG;;
         h)      printf '%s\n' "$ghmd2html_usage"; exit 0;;

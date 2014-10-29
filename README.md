@@ -4,6 +4,7 @@ A ghmd-cms is an unofficial GitHub Markdown to HTML Content Management System.
 Name | On GitHub
 ---- | ----
 ghmd2html | [github-markup](https://github.com/github/markup).
+      | [github-markdown.](http://github.github.com/github-flavored-markdown/)
 
 ### Whats it do?
 

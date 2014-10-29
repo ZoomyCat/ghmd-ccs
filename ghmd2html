@@ -11,8 +11,6 @@
 conf=$( find . -name ghmd-cms.config -type f -print )
 usage=$( find . -name ghmd-cms.usage -type f -print )
 
-printf  '\n%s %s %s\n' "This program has these variables:" "$conf" "$usage"
-
 source "$conf"
 source "$usage"
 

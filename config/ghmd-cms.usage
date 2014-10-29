@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+##Created by Edward "edge226" Tunnah.
+
+## Here is a basic template to make creating new entries easier.
+## This is the minimum amount of information that a help usage should
+## have.
+clean_template_usage="
+Name:
+
+Description:
+
+Usage:
+
+Options:
+
+Examples:
+
+"
+
+ghmd2html_usage="
+Name:           ghmd2html
+
+Description:    Converts GitHub Markdown to html.
+
+Usage:          ghmd2html <Options>
+
+Options:        -n    name
+
+                -s    <.md file>
+
+                -t    <.mu file>
+
+Examples:
+
+"
+
+index_usage="
+Name:           index
+
+Description:    Will create a list of all README.md files in the README.index file at the root of the site.
+
+Usage:          index <Options>
+
+Options:        -n name
+
+Examples:
+
+    index
+
+    index -n notareadme.md
+
+"

@@ -6,10 +6,16 @@
 ## It convers README.md to a README.mu
 ## It requires the github-markup command.
 
+## Load config and usage file for the framework.
+source ./config/ghmd-cms.config
+source ./config/ghmd-cms.usage
+
 OPTIND=1 ## make sure the optargs are reset for getopts
 
-while getopts "n:h" opt; do
+while getopts "s:t:n:h" opt; do
     case "$opt" in
+        s )   md=$OPTARG;;
+        t )   mu=$OPTARG;;
         n)    page=$OPTARG;;
         h)      printf '%s\n' "$checklinks_usage"; exit 0;;
         \?)     printf '%s\n' "$checklinks_usage" >&2; exit 1;;
@@ -17,9 +23,9 @@ while getopts "n:h" opt; do
 done
 
 write_mu(){ ## Safely writes the .mu (markup) version of the markdown.
-  if [[ -f ./README.md ]]
+  if [[ -f ./"$md" ]]
     then
-    github-markup README.md > README.mu
+    github-markup ./"$md" > "$mu"
   fi
 }
 
@@ -29,6 +35,7 @@ if [[ "$page" != "" ]]
   then
   local loc=$( find  ../ -name "$page" -type d -print0 )
   if [[ -d "$loc"  ]]
+    ## make sure the directory exists before cd into the directory then write the markup.
     then
     cd "$loc" | exit
     write_mu

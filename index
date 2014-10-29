@@ -4,8 +4,11 @@
 ## This command will index the website for all README.md files that exist saving to a README.index file
 ## in the root of the website.
 
-source ./ghmd-cms/config/ghmd-cms.config
-source ./ghmd-cms/config/ghmd-cms.config
+conf=$( find . -name ghmd-cms.config -type f -print )
+usage=$( find . -name ghmd-cms.usage -type f -print )
+
+source "$conf"
+source "$usage"
 
 while getopts "n:h" opt; do
     case "$opt" in

@@ -5,12 +5,8 @@
 
 conf=$( find . -name ghmd-cms.config -type f -print )
 usage=$( find . -name ghmd-cms.usage -type f -print )
-template=$( find . -name index-template.html -type f -print )
 g2h=$( find . -name ghmd2html -type f -print )
-if [[ ! -f "$template" ]]
-  then
-  template=$( find ../ -name index-template.html -type f -print )
-fi
+
 
 source "$conf"
 source "$usage"
@@ -34,11 +30,31 @@ get_loc(){
   loc=${struct%%"$md"}
 }
 
+get_name(){
+  printf '\n%s %s\n' "location is currently" "$loc"
+  if [[ "$loc" != "" ]] && [[ "$loc" != "./" ]]
+    then
+    name=${loc%"/"}
+    name=${name##*/}
+    printf '\n%s %s\n' "name is:" "$name"
+  fi
+}
+
+get_template(){
+  get_name
+    printf '\n%s %s%s\n' "Setting template to:" "$loc" "template/index-template.html"
+    template="$loc""template/index-template.html"
+}
+
+
+
 main(){
     get_mds
     for page in "${index_md[@]}"
     do
       get_loc "$page"
+
+      get_template
 
       printf '\n\n%s %s\n' "The location of the current md file is:" "$loc$mu"
 
@@ -52,6 +68,8 @@ main(){
         touch "$loc$mu"
         printf '\n%s %s\n' "Now we are writing to:" "$loc$mu"
       fi
+        printf '\n%s %s\n' "The template file is:" "$template"
+
       while IFS= read -r line; do ## Read through the file.
         if [[ "$line" != *"<p>Template.</p>"* ]] ||
           [[ "$line" != *"<p>Template</p>"* ]] ||

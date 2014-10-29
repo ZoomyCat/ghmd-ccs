@@ -31,9 +31,9 @@ write_mu(){ ## Safely writes the .mu (markup) version of the markdown.
     then
     if [[ "$mu" = "README.mu" ]]
       then
-      github-markup ./"$md" > "$mu"
+      github-markup ./"$md"
     else
-      github-markup ./"$md" >> "$mu"
+      github-markup ./"$md"
     fi
   fi
 }
@@ -53,6 +53,7 @@ else
   ## Goto the mu file in the current directory.
   write_mu
 fi
+exit 0
 }
 
 main

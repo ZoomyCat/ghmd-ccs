@@ -1,0 +1,62 @@
+#!/usr/bin/env bash
+##Created by Edward "edge226" Tunnah.
+
+## This command will index the website for all README.md files that exist saving to a README.index file
+## in the root of the website.
+
+conf=$( find . -name ghmd-cms.config -type f -print )
+usage=$( find . -name ghmd-cms.usage -type f -print )
+template=$( find . -name index-template.html -type f -print )
+
+source "$conf"
+source "$usage"
+
+while getopts "d:m:h" opt; do
+    case "$opt" in
+        m) mu=$OPTARG;;
+        d)    md=$OPTARG;;
+        h)      printf '%s\n' "$index_usage"; exit 0;;
+        \?)     printf '%s\n' "$index_usage" >&2; exit 1;;
+    esac
+done
+
+get_mds(){
+  index_md=( $( find . -name "$md" -type f -print ) )
+}
+
+get_name(){
+  unset name
+  local struct="$1"
+
+  if [[ "$name" != "" ]]
+    then
+    return
+  else
+    name=${struct%%"/$md"}
+    if [[ "$name" != "./" ]] && [[ "$name" = */* ]]
+      then
+      name=${name##*/}
+    fi
+  fi
+}
+
+main(){
+    get_mds
+    for page in "${index_md[@]}"
+    do
+      get_name "$page"
+      printf '' > "$mu"
+      while IFS= read -r line; do ## Read through the file.
+        if [[ "$line" != *"<p>Template.</p>"* ]]
+          then
+          printf '%s\n' "$line" >> "$mu"
+        else
+          ##pwd
+          ##printf '\n%s\n' "$name"
+          ./ghmd2html >> "$mu"
+        fi
+      done < "$template"
+    done
+    exit 0
+}
+main

@@ -7,15 +7,19 @@
 ## It requires the github-markup command.
 
 ## Load config and usage file for the framework.
-source ./config/ghmd-cms.config
-source ./config/ghmd-cms.usage
+
+conf=$( find . -name ghmd-cms.config -type f -print )
+usage=$( find . -name ghmd-cms.usage -type f -print )
+
+printf  '\n%s %s %s\n' "This program has these variables:" "$conf" "$usage"
+
+source "$conf"
+source "$usage"
 
 OPTIND=1 ## make sure the optargs are reset for getopts
 
-while getopts "s:t:n:h" opt; do
+while getopts "n:h" opt; do
     case "$opt" in
-        s )   md=$OPTARG;;
-        t )   mu=$OPTARG;;
         n)    page=$OPTARG;;
         h)      printf '%s\n' "$checklinks_usage"; exit 0;;
         \?)     printf '%s\n' "$checklinks_usage" >&2; exit 1;;
@@ -23,9 +27,9 @@ while getopts "s:t:n:h" opt; do
 done
 
 write_mu(){ ## Safely writes the .mu (markup) version of the markdown.
-  if [[ -f ./"$md" ]]
+  if [[ -f ./"README.md" ]]
     then
-    github-markup ./"$md" > "$mu"
+    github-markup ./"README.md" > "README.mu"
   fi
 }
 

@@ -26,10 +26,6 @@ Usage:          ghmd2html <Options>
 
 Options:        -n    name
 
-                -s    <.md file>
-
-                -t    <.mu file>
-
 Examples:
 
 "

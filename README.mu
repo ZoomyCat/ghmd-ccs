@@ -12,6 +12,10 @@
 <td>ghmd2html</td>
 <td><a href="https://github.com/github/markup">github-markup</a>.</td>
 </tr>
+<tr>
+<td></td>
+<td><a href="http://github.github.com/github-flavored-markdown/">github-markdown.</a></td>
+</tr>
 </tbody></table>
 
 <h3>Whats it do?</h3>

@@ -1,0 +1,74 @@
+#!/usr/bin/env bash
+##Created by Edward "edge226" Tunnah.
+
+## This command will index the website for all README.md files that exist saving to a variable and output to a new index.html.
+
+conf=$( find . -name ghmd-cms.config -type f -print )
+usage=$( find . -name ghmd-cms.usage -type f -print )
+template=$( find . -name index-template.html -type f -print )
+g2h=$( find . -name ghmd2html -type f -print )
+if [[ ! -f "$template" ]]
+  then
+  template=$( find ../ -name index-template.html -type f -print )
+fi
+
+source "$conf"
+source "$usage"
+
+while getopts "d:m:h" opt; do
+    case "$opt" in
+        m) mu=$OPTARG;;
+        d)    md=$OPTARG;;
+        h)      printf '%s\n' "$index_usage"; exit 0;;
+        \?)     printf '%s\n' "$index_usage" >&2; exit 1;;
+    esac
+done
+
+get_mds(){
+  index_md=( $( find . -name "$md" -type f -print ) )
+}
+
+get_loc(){
+  unset loc
+  local struct="$1"
+  loc=${struct%%"$md"}
+}
+
+main(){
+    get_mds
+    for page in "${index_md[@]}"
+    do
+      get_loc "$page"
+
+      printf '\n\n%s %s\n' "The location of the current md file is:" "$loc$mu"
+
+      if [[ -f "$loc$mu" ]]
+        then
+        rm "$loc$mu"
+      fi
+
+      if [[ ! -f "$loc$mu" ]]
+        then
+        touch "$loc$mu"
+        printf '\n%s %s\n' "Now we are writing to:" "$loc$mu"
+      fi
+      while IFS= read -r line; do ## Read through the file.
+        if [[ "$line" != *"<p>Template.</p>"* ]] ||
+          [[ "$line" != *"<p>Template</p>"* ]] ||
+           [[ "$line" != *"<p>template.</p>"* ]] ||
+           [[ "$line" != *"<p>template</p>"* ]] ||
+           [[ "$line" != *"<p>TEMPLATE.</p>"* ]] ||
+           [[ "$line" != *"<p>TEMPLATE</p>"* ]]
+          then
+          printf '%s\n' "$line"
+          printf '%s\n' "$line" >> "$loc$mu"
+        else
+          printf '\n%s %s %s %s %s %s\n' "Running the " "$g2h" "Command and it should write this output to" "$loc$mu" "using data from" "$page"
+          "$g2h" -l "$loc" -d "$page" ## >> "$loc$mu"
+          "$g2h" -l "$loc" -d "$page" >> "$loc$mu"
+        fi
+      done < "$template"
+    done
+    exit 0
+}
+main

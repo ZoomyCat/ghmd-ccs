@@ -4,7 +4,7 @@
 ## The script converts github markdown into html that can be pasted into the index-template.html to be able
 ## to easily update and modify the website or potentially multiple websites.
 ## It convers README.md to a README.mu
-## It requires the github-markup command.
+## It requires the github-markup command and github-markdown.
 
 ## Load config and usage file for the framework.
 
@@ -16,18 +16,20 @@ source "$usage"
 
 OPTIND=1 ## make sure the optargs are reset for getopts
 
-while getopts "n:h" opt; do
+while getopts "m:d:n:h" opt; do
     case "$opt" in
         n)    page=$OPTARG;;
+        m)   mu=$OPTARG;;
+        d)    md=$OPTARG;;
         h)      printf '%s\n' "$checklinks_usage"; exit 0;;
         \?)     printf '%s\n' "$checklinks_usage" >&2; exit 1;;
     esac
 done
 
 write_mu(){ ## Safely writes the .mu (markup) version of the markdown.
-  if [[ -f ./"README.md" ]]
+  if [[ -f ./"$md" ]]
     then
-    github-markup ./"README.md" > "README.mu"
+    github-markup ./"$md" > "$mu"
   fi
 }
 

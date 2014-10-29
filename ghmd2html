@@ -21,8 +21,8 @@ while getopts "m:d:n:h" opt; do
         n)    page=$OPTARG;;
         m)   mu=$OPTARG;;
         d)    md=$OPTARG;;
-        h)      printf '%s\n' "$checklinks_usage"; exit 0;;
-        \?)     printf '%s\n' "$checklinks_usage" >&2; exit 1;;
+        h)      printf '%s\n' "$ghmd2html_usage"; exit 0;;
+        \?)     printf '%s\n' "$ghmd2html_usage" >&2; exit 1;;
     esac
 done
 

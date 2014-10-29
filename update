@@ -57,9 +57,9 @@ main(){
           then
           printf '%s\n' "$line" >> "$loc$mu"
         else
-          printf '\n%s %s %s %s\n' "Running the " "$g2h" "Command and it should write this output to" "$loc$mu"
-          "$g2h" -l "$loc" ## >> "$loc$mu"
-          "$g2h" -l "$loc" >> "$loc$mu"
+          printf '\n%s %s %s %s %s %s\n' "Running the " "$g2h" "Command and it should write this output to" "$loc$mu" "using data from" "$page"
+          "$g2h" -l "$loc" -d "$page" ## >> "$loc$mu"
+          "$g2h" -l "$loc" -d "$page" >> "$loc$mu"
         fi
       done < "$template"
     done

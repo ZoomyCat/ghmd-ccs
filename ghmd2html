@@ -33,14 +33,9 @@ if [[ -d "$loc" ]]
 fi
 
 write_mu(){ ## Safely writes the .mu (markup) version of the markdown.
-  if [[ -f ./"$md" ]]
+    if [[ -f "$md" ]]
     then
-    if [[ "$mu" = "README.mu" ]]
-      then
-      github-markup ./"$md"
-    else
-      github-markup ./"$md"
-    fi
+    github-markup "$md"
   fi
 }
 
@@ -52,7 +47,6 @@ if [[ "$page" != "" ]]
   if [[ -d "$loc"  ]]
     ## make sure the directory exists before cd into the directory then write the markup.
     then
-    cd "$loc" | exit
     write_mu
   fi
 else

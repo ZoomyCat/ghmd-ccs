@@ -29,7 +29,12 @@ done
 write_mu(){ ## Safely writes the .mu (markup) version of the markdown.
   if [[ -f ./"$md" ]]
     then
-    github-markup ./"$md" > "$mu"
+    if [[ "$mu" = "README.mu" ]]
+      then
+      github-markup ./"$md" > "$mu"
+    else
+      github-markup ./"$md" >> "$mu"
+    fi
   fi
 }
 

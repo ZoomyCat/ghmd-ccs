@@ -15,8 +15,8 @@ while getopts "d:m:h" opt; do
     case "$opt" in
         m) mu=$OPTARG;;
         d)    md=$OPTARG;;
-        h)      printf '%s\n' "$index_usage"; exit 0;;
-        \?)     printf '%s\n' "$index_usage" >&2; exit 1;;
+        h)      printf '%s\n' "$update_usage"; exit 0;;
+        \?)     printf '%s\n' "$update_usage" >&2; exit 1;;
     esac
 done
 

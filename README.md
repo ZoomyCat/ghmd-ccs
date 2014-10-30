@@ -28,4 +28,4 @@ Usage is simple.
 update
 ```
 
-It scans for the README.md files and merges the template with the converted markdown as the main content of each html file. It will replace the index every time.
+After that add and commit your index.html and README.md and your website will be up to date with the new content you just created, All in a more user friendly language.

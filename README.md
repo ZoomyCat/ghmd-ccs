@@ -6,7 +6,7 @@ Name | On GitHub
 ghmd2html | [github-markup](https://github.com/github/markup).
       | [github-markdown.](http://github.github.com/github-flavored-markdown/)
 
-### [What feature is next?](plans/index.html)
+### [What feature is next?](plans)
 
 Click the link above to see what feature I am thinking of working on next!
 

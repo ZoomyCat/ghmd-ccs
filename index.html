@@ -1,97 +1,91 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
 
-<head>
-  <meta charset='utf-8'>
-  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
 
-  <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-  <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
+    <title>Ghmd-cms by edge226</title>
+  </head>
 
-  <title>Ghmd-cms by edge226</title>
-</head>
+  <body>
 
-<body>
+    <header>
+      <div class="container">
+        <h1>Ghmd-cms</h1>
+        <h2>A unofficial GitHub Markdown to HTML Content Management System.</h2>
 
-  <header>
+        <section id="downloads">
+          <a href="http://edge226.github.io/" class="btn">Edge226</a>
+          <a href="https://github.com/edge226/ghmd-cms/zipball/master" class="btn">Download as .zip</a>
+          <a href="https://github.com/edge226/ghmd-cms/tarball/master" class="btn">Download as .tar.gz</a>
+          <a href="https://github.com/edge226/ghmd-cms" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
     <div class="container">
-      <h1>Ghmd-cms</h1>
-      <h2>A unofficial GitHub Markdown to HTML Content Management System.</h2>
+      <section id="main_content">
+<p>A ghmd-cms is an unofficial GitHub Markdown to HTML Content Management System.</p>
 
-      <section id="downloads">
-        <a href="http://edge226.github.io/" class="btn">Edge226</a>
-        <a href="https://github.com/edge226/ghmd-cms/zipball/master" class="btn">Download as .zip</a>
-        <a href="https://github.com/edge226/ghmd-cms/tarball/master" class="btn">Download as .tar.gz</a>
-        <a href="https://github.com/edge226/ghmd-cms" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
-      </section>
-    </div>
-  </header>
+<h3>Dependencies</h3>
 
-  <div class="container">
-    <section id="main_content">
-      <p>A ghmd-cms is an unofficial GitHub Markdown to HTML Content Management System.</p>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>On GitHub</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ghmd2html</td>
+<td><a href="https://github.com/github/markup">github-markup</a>.</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="http://github.github.com/github-flavored-markdown/">github-markdown.</a></td>
+</tr>
+</tbody></table>
 
-      <h3>Dependencies</h3>
+<h3>Whats it do?</h3>
 
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>On GitHub</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>ghmd2html</td>
-            <td><a href="https://github.com/github/markup">github-markup</a>.</td>
-          </tr>
-          <tr>
-            <td></td>
-            <td><a href="http://github.github.com/github-flavored-markdown/">github-markdown.</a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+<p>This suite of scripts will be used in being able to dynamically generate websites from a template html file and the content will be pulled in by README.md files.</p>
 
-      <h3>Whats it do?</h3>
+<p>The html files created in this process will overwrite the previous versions, No need to backup since your previous version is your previous git commit.</p>
 
-      <p>This suite of scripts will be used in being able to dynamically generate websites from a template html file and the content will be pulled in by README.md files.</p>
+<h4>Some things to consider:</h4>
 
-      <p>The html files created in this process will overwrite the previous versions, No need to backup since your previous version is your previous git commit.</p>
+<ul>
+<li>I recommend adding &quot;ghmd-cms&quot; to the .gitignore file for your project if you clone directly into your project.</li>
+</ul>
 
-      <h4>Some things to consider:</h4>
+<h3>How to use it?</h3>
 
-      <ul>
-        <li>I recommend adding &quot;ghmd-cms&quot; to the .gitignore file for your project if you clone directly into your project.</li>
-      </ul>
+<p>If you cloned ghmd-cms into your website directory and added ghmd-cms to your .gitignore to ensure you will not re-upload ghmd-cms into your repository. This will ensure that ghmd-cms does not dirty your upload directory.</p>
 
-      <h3>How to use it?</h3>
+<p>I do not suggest running ghmd2html manually. It is really just a library for update to call.</p>
 
-      <p>If you cloned ghmd-cms into your website directory and added ghmd-cms to your .gitignore to ensure you will not re-upload ghmd-cms into your repository. This will ensure that ghmd-cms does not dirty your upload directory.</p>
+<p>Usage is simple.</p>
 
-      <p>I do not suggest running ghmd2html manually. It is really just a library for update to call.</p>
-
-      <p>Usage is simple.</p>
-
-      <pre><code>update
+<pre><code>update
 </code></pre>
 
-      <p>After that add and commit your index.html and README.md and your website will be up to date with the new content you just created, All in a more user friendly language.</p>
+<p>After that add and commit your index.html and README.md and your website will be up to date with the new content you just created, All in a more user friendly language.</p>
 
-    </section>
-  </div>
+      </section>
+    </div>
 
-  <script type="text/javascript">
-    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-  </script>
-  <script type="text/javascript">
-    try {
-      var pageTracker = _gat._getTracker("UA-38401226-4");
-      pageTracker._trackPageview();
-    } catch (err) {}
-  </script>
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-38401226-4");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
 
-</body>
-
+  </body>
 </html>

@@ -42,11 +42,28 @@ get_name(){
 
 get_template(){
   get_name
+  if [[ -f  "$loc""template/index-template.html" ]]
+    then
     printf '\n%s %s%s\n' "Setting template to:" "$loc" "template/index-template.html"
     template="$loc""template/index-template.html"
+    downloads="$loc""/template/downloads.html"
+    sidebar="$loc""/template/sidebar.html"
+  else
+    printf '\n%s %s\n' "loc is" "$loc"
+    pwd
+    local temp_loc=${loc%/*/}
+    printf '\n%s %s\n' "temp_loc is" "$temp_loc"
+    template="$temp_loc""/template/index-template.html"
+    printf '\n%s %s\n' "temp_loc is" "$temp_loc"
+    downloads="$temp_loc""/template/downloads.html"
+    printf '\n%s %s\n' "temp_loc is" "$temp_loc"
+    sidebar="$temp_loc""/template/sidebar.html"
+    loadcss="$temp_loc""/template/loadcss.html"
+    printf '\n%s %s\n' "template has been set to:" "$template"
+    printf '\n%s %s\n' "downloads has been set to:" "$downloads"
+    printf '\n%s %s\n' "sidebar has been set to:" "$sidebar"
+  fi
 }
-
-
 
 main(){
     get_mds
@@ -71,16 +88,31 @@ main(){
         printf '\n%s %s\n' "The template file is:" "$template"
 
       while IFS= read -r line; do ## Read through the file.
-        if [[ "$line" != *"<p>Template.</p>"* ]]
+        if [[ "$line" = *"<p>Downloads.</p>"* ]]
           then
-          printf '%s\n' "$line"
-          printf '%s\n' "$line" >> "$loc$mu"
+          ## printf '\n%s %s\n' "This is what downloads is set to:" "$downloads"
+            cat "$downloads"
+            cat "$downloads" >> "$loc$mu"
+        elif [[ "$line" = *"<p>Sidebar.</p>"* ]]
+          then
+          printf '\n%s %s\n' "This is what sidebar is set to:" "$sidebar"
+          cat "$sidebar"
+          cat "$sidebar" >> "$loc$mu"
+        elif [[ "$line" = *"  <p>Load CSS.</p>"* ]]
+            then
+            printf '\n%s %s\n' "This is what loadcss is set to:" "$loadcss"
+            cat "$loadcss"
+            cat "$loadcss" >> "$loc$mu"
+        elif [[ "$line" = *"<p>Template.</p>"* ]]
+          then
+          #printf '\n%s %s %s %s %s %s\n' "Running the " "$g2h" "Command and it should write this output to" "$loc$mu" "using data from" "$page"
+          #"$g2h" -d "$page" ## >> "$loc$mu"
+          "$g2h" -d "$page" >> "$loc$mu"
         else
-          printf '\n%s %s %s %s %s %s\n' "Running the " "$g2h" "Command and it should write this output to" "$loc$mu" "using data from" "$page"
-          "$g2h" -l "$loc" -d "$page" ## >> "$loc$mu"
-          "$g2h" -l "$loc" -d "$page" >> "$loc$mu"
+          #printf '%s\n' "$line"
+          printf '%s\n' "$line" >> "$loc$mu"
         fi
-      done < "$template"
+      done < "$template" ## The template file is what is read.
     done
     exit 0
 }

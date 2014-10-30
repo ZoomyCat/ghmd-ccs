@@ -8,7 +8,7 @@ The structure will contain something like this.
 file | Purpose of the file.
 ----|----
 index-template.html | This is what holds the base html.
-loadcss.html | The css loading definitions.
+css.html | The css loading definitions.
 sidebar.html | The html for a side bar if any.
 downloads.html | The top download menu of the site.
 title.html | The title of the site.

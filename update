@@ -48,7 +48,7 @@ get_template(){
     template="$loc""template/index-template.html"
     downloads="$loc""/template/downloads.html"
     sidebar="$loc""/template/sidebar.html"
-    loadcss="$loc""/template/loadcss.html"
+    loadcss="$loc""/template/css.html"
 
   else
     printf '\n%s %s\n' "loc is" "$loc"
@@ -60,7 +60,7 @@ get_template(){
     downloads="$temp_loc""/template/downloads.html"
     printf '\n%s %s\n' "temp_loc is" "$temp_loc"
     sidebar="$temp_loc""/template/sidebar.html"
-    loadcss="$temp_loc""/template/loadcss.html"
+    loadcss="$temp_loc""/template/css.html"
     printf '\n%s %s\n' "template has been set to:" "$template"
     printf '\n%s %s\n' "downloads has been set to:" "$downloads"
     printf '\n%s %s\n' "sidebar has been set to:" "$sidebar"

@@ -86,7 +86,7 @@ main(){
           "$g2h" -l "$loc" -d "$page" ## >> "$loc$mu"
           "$g2h" -l "$loc" -d "$page" >> "$loc$mu"
         fi
-      done < "$template"
+      done < "$template" ## The template file is what is read.
     done
     exit 0
 }

@@ -6,9 +6,9 @@ Name | On GitHub
 ghmd2html | [github-markup](https://github.com/github/markup).
       | [github-markdown.](http://github.github.com/github-flavored-markdown/)
 
-### [What feature is next?](plans)
+### [Future features?](plans)
 
-Click the link above to see what feature I am thinking of working on next!
+Click the link above to see future features of ghmd-ccs.
 
 ### Whats it do?
 

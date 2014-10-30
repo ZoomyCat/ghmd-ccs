@@ -3,6 +3,8 @@
 
 I plan on working on a way to read a index.html file and create an appropriate template structure that is easily updated.
 
+The structure will contain something like this.
+
 file | Purpose of the file.
 ----|----
 index-template.html | This is what holds the base html.

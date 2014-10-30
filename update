@@ -71,12 +71,7 @@ main(){
         printf '\n%s %s\n' "The template file is:" "$template"
 
       while IFS= read -r line; do ## Read through the file.
-        if [[ "$line" != *"<p>Template.</p>"* ]] ||
-          [[ "$line" != *"<p>Template</p>"* ]] ||
-           [[ "$line" != *"<p>template.</p>"* ]] ||
-           [[ "$line" != *"<p>template</p>"* ]] ||
-           [[ "$line" != *"<p>TEMPLATE.</p>"* ]] ||
-           [[ "$line" != *"<p>TEMPLATE</p>"* ]]
+        if [[ "$line" != *"<p>Template.</p>"* ]]
           then
           printf '%s\n' "$line"
           printf '%s\n' "$line" >> "$loc$mu"

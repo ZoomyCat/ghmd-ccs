@@ -6,6 +6,8 @@ Name | On GitHub
 ghmd2html | [github-markup](https://github.com/github/markup).
       | [github-markdown.](http://github.github.com/github-flavored-markdown/)
 
+### [What feature is next?](plans/index.html)
+
 ### Whats it do?
 
 This suite of scripts will be used in being able to dynamically generate websites from a template html file and the content will be pulled in by README.md files.

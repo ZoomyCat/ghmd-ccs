@@ -42,8 +42,14 @@ get_name(){
 
 get_template(){
   get_name
+  if [[ -f  "$loc""template/index-template.html" ]]
+    then
     printf '\n%s %s%s\n' "Setting template to:" "$loc" "template/index-template.html"
     template="$loc""template/index-template.html"
+  else
+    template=$( find -name index-template.html -type f -print )
+    printf '\n%s %s\n' "template has been set to:" "$template"
+  fi
 }
 
 

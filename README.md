@@ -8,6 +8,8 @@ ghmd2html | [github-markup](https://github.com/github/markup).
 
 ### [What feature is next?](plans/index.html)
 
+Click the link above to see what feature I am thinking of working on next!
+
 ### Whats it do?
 
 This suite of scripts will be used in being able to dynamically generate websites from a template html file and the content will be pulled in by README.md files.

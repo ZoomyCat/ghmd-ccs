@@ -1,4 +1,4 @@
-A ghmd-cms is an unofficial GitHub Markdown to HTML Content Management System.
+A ghmd-cms is an unofficial GitHub Markdown to HTML Content Creation System.
 
 ### Dependencies
 Name | On GitHub

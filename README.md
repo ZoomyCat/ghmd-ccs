@@ -1,4 +1,4 @@
-ghmd-ccSs is an unofficial GitHub Markdown to HTML Content Creation System.
+ghmd-ccs is an unofficial GitHub Markdown to HTML Content Creation System.
 
 ### Dependencies
 Name | On GitHub

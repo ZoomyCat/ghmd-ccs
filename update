@@ -58,6 +58,7 @@ get_template(){
     downloads="$temp_loc""/template/downloads.html"
     printf '\n%s %s\n' "temp_loc is" "$temp_loc"
     sidebar="$temp_loc""/template/sidebar.html"
+    loadcss="$temp_loc""/template/loadcss.html"
     printf '\n%s %s\n' "template has been set to:" "$template"
     printf '\n%s %s\n' "downloads has been set to:" "$downloads"
     printf '\n%s %s\n' "sidebar has been set to:" "$sidebar"
@@ -97,6 +98,11 @@ main(){
           printf '\n%s %s\n' "This is what sidebar is set to:" "$sidebar"
           cat "$sidebar"
           cat "$sidebar" >> "$loc$mu"
+        elif [[ "$line" = *"  <p>Load CSS.</p>"* ]]
+            then
+            printf '\n%s %s\n' "This is what loadcss is set to:" "$loadcss"
+            cat "$loadcss"
+            cat "$loadcss" >> "$loc$mu"
         elif [[ "$line" = *"<p>Template.</p>"* ]]
           then
           #printf '\n%s %s %s %s %s %s\n' "Running the " "$g2h" "Command and it should write this output to" "$loc$mu" "using data from" "$page"

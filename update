@@ -3,8 +3,8 @@
 
 ## This command will index the website for all README.md files that exist saving to a variable and output to a new index.html.
 
-conf=$( find . -name ghmd-cms.config -type f -print )
-usage=$( find . -name ghmd-cms.usage -type f -print )
+conf=$( find . -name ghmd-ccs.config -type f -print )
+usage=$( find . -name ghmd-ccs.usage -type f -print )
 g2h=$( find . -name ghmd2html -type f -print )
 
 

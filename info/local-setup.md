@@ -4,8 +4,11 @@
 
 #### ruby
 ```
+## Arch Linux
 pacman -S ruby
+## Debian and Ubuntu
 apt-get install ruby
+## Red Hat
 yum --install ruby
 ```
 #### github-markdown & github-markup

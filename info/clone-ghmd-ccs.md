@@ -12,6 +12,11 @@ git clone https://github.com/edge226/ghmd-ccs.git
 git clone git@github.com:edge226/ghmd-ccs.git
 ```
 
+#### Checkout master:
+```
+git checkout master
+```
+
 ### Direct links:
 
 Direct links are available at the top of the page.

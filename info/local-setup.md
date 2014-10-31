@@ -1,9 +1,13 @@
 ## How to install ghmd-ccs dependencies?
 
 ### What do I need?
-Name | Command to get it.
-----|----
-ruby | `pacman -S ruby`
+
+#### ruby
+```
+pacman -S ruby
+apt-get install ruby
+yum --install ruby
+```
 github-markdown | `gem install github-markdown`
 github-markup | `gem install github-markup`
 

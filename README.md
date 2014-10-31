@@ -22,6 +22,8 @@ The html files created in this process will overwrite the previous versions, No 
 
 ### How to use it?
 
+Check out the [info](http://edge226.github.io/ghmd-ccs/info/) page.
+
 If you cloned ghmd-cms into your website directory and added ghmd-cms to your .gitignore to ensure you will not re-upload ghmd-cms into your repository. This will ensure that ghmd-cms does not dirty your upload directory.
 
 I do not suggest running ghmd2html manually. It is really just a library for update to call.

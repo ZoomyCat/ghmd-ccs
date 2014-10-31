@@ -11,7 +11,7 @@ github-markup | `gem install github-markup`
 WARNING: You don't have `/home/username/.gem/ruby/2.1.0/bin` in your PATH,
 gem executables will not run.
 
-To fix this you will need to add the location given in the warning above to your `.bashrc` file with the following format.
+To fix this you will need to add the location given in the warning above to your `/etc/profile` file with the following format.
 
 ```
 PATH="$PATH:/home/username/.gem/ruby/2.1.0/bin"

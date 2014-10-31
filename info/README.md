@@ -25,5 +25,6 @@
 
 #### About ghmd-ccs.
 
-* [Commands and information](ghmd-ccs-info.html)
+* [Planned features.](../plans/)
+* [Commands and information.](ghmd-ccs-info.html)
 * [A bit about templates.](about-templates.html)

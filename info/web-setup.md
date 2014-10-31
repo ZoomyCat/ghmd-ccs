@@ -15,7 +15,7 @@ For a basic setup this is very easy:
 4. Setup your `.gitignore` file.
   * Create a file called `.gitignore` in the root directory of your website if it does not already exist.
   * Modify `.gitignore` and add `ghmd-ccs` to the file.
-    * This makes sure ghmd-ccs is not add to your website.
+    * This makes sure ghmd-ccs is not added to your website.
 
 #### Next!
 [Clone ghmd-ccs into the website.](clone-ghmd-ccs.html)

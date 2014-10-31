@@ -8,8 +8,10 @@
 
 ## Load config and usage file for the framework.
 
-conf=$( find . -name ghmd-cms.config -type f -print )
-usage=$( find . -name ghmd-cms.usage -type f -print )
+conf=$( find . -name ghmd-ccs.config -type f -print )
+usage=$( find . -name ghmd-ccs.usage -type f -print )
+
+printf '\n\n%s %s %s\n' "conf and usage are:" "$conf" "$usage"
 
 source "$conf"
 source "$usage"

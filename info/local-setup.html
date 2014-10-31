@@ -40,6 +40,46 @@
 
     <div class="container">
       <section id="main_content">
+<h2>How to install ghmd-ccs dependencies?</h2>
+
+<h3>What do I need?</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Command to get it.</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ruby</td>
+<td><code>pacman -S ruby</code></td>
+</tr>
+<tr>
+<td>github-markdown</td>
+<td><code>gem install github-markdown</code></td>
+</tr>
+<tr>
+<td>github-markup</td>
+<td><code>gem install github-markup</code></td>
+</tr>
+</tbody></table>
+
+<h2>You will get a warning similar to this:</h2>
+
+<p>WARNING: You don&#39;t have <code>/home/username/.gem/ruby/2.1.0/bin</code> in your PATH,
+gem executables will not run.</p>
+
+<p>To fix this you will need to add the location given in the warning above to your <code>~/.profile</code> file with to file as shown below.</p>
+
+<pre><code>PATH=&quot;$PATH:/home/username/.gem/ruby/2.1.0/bin:&quot;
+export PATH
+</code></pre>
+
+<p>Your computer is now configured with all dependencies required to be able to run ghmd-css.</p>
+
+<h4>Next!</h4>
+
+<p><a href="create-website.html">Create a compatible website.</a></p>
 
       </section>
     </div>

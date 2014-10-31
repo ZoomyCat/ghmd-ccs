@@ -21,4 +21,4 @@ export PATH
 Your computer is now configured with all dependencies required to be able to run ghmd-css.
 
 #### Next!
-[Create a compatible website.](create-website.md)
+[Create a compatible website.](create-website.html)

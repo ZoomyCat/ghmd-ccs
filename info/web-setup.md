@@ -18,4 +18,4 @@ For a basic setup this is very easy:
     * This makes sure ghmd-ccs is not add to your website.
 
 #### Next!
-[Clone ghmd-ccs into the website.](clone-ghmd-ccs.md)
+[Clone ghmd-ccs into the website.](clone-ghmd-ccs.html)

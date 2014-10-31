@@ -39,44 +39,39 @@
 
     <div class="container">
       <section id="main_content">
-<h1>ghmd-ccs usage documentation.</h1>
+<h1>Steps to configuring website on gihub.io to work with ghmd-ccs.</h1>
 
-<h2>Purpose:</h2>
-
-<p>To document how to use ghmd-ccs - GitHub Markdown to HTML Content Creation System.</p>
-
-<h3>Topics.</h3>
-
-<h4>Useful Links.</h4>
-
-<ul>
-<li><a href="https://guides.github.com/features/mastering-markdown/">Mastering GitHub Markdown.</a></li>
-</ul>
-
-<h4>Installation material.</h4>
+<p>For a basic setup this is very easy:</p>
 
 <ol>
-<li><a href="local-setup.html">Local Setup.</a></li>
-<li><a href="create-website.html">Create a compatible website.</a></li>
-<li><a href="web-setup.html">Configure the website to work with ghmd-ccs.</a></li>
-<li><a href="clone-ghmd-ccs.html">Clone ghmd-ccs into the website.</a></li>
+<li><p>Create a directory called <code>template</code> in the root of your website.</p></li>
+<li><p>Copy the original <code>index.html</code> file into the <code>template</code> directory.</p></li>
+<li><p>Make a duplicate of the <code>template/index.html</code> called <code>index-template.html</code> in the <code>template</code> directory.</p>
+
+<ul>
+<li>At this point your <code>template</code> directory structure should look like this.
+
+<ul>
+<li><code>template</code></li>
+<li><code>template/index.html</code></li>
+<li><code>template/index-template.html</code></li>
+</ul></li>
+</ul></li>
+<li><p>Setup your <code>.gitignore</code> file.</p>
+
+<ul>
+<li>Create a file called <code>.gitignore</code> in the root directory of your website if it does not already exist.</li>
+<li>Modify <code>.gitignore</code> and add <code>ghmd-ccs</code> to the file.
+
+<ul>
+<li>This makes sure ghmd-ccs is not add to your website.</li>
+</ul></li>
+</ul></li>
 </ol>
 
-<h4>Advanced template and CSS configuration.</h4>
+<h4>Next!</h4>
 
-<ul>
-<li><a href="html-mods.html">Template html file modulation</a>
-Will eventually be handled by update-templates.</li>
-<li><a href="css-mods.html">CSS modulation</a>
-I&#39;m not too sure how this will be handled yet.</li>
-</ul>
-
-<h4>About ghmd-ccs.</h4>
-
-<ul>
-<li><a href="ghmd-ccs-info.html">Commands and information</a></li>
-<li><a href="about-templates.html">A bit about templates.</a></li>
-</ul>
+<p><a href="clone-ghmd-ccs.html">Clone ghmd-ccs into the website.</a></p>
 
       </section>
     </div>

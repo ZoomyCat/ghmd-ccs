@@ -13,4 +13,4 @@
 
 
 #### Next!
-[Configure the website to work with ghmd-ccs.](web-setup.md)
+[Configure the website to work with ghmd-ccs.](web-setup.html)

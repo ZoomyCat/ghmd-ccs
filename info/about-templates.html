@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+<link rel="stylesheet" type="text/css" href="./stylesheets/stylesheet.css" media="screen">
+<link rel="stylesheet" type="text/css" href="./stylesheets/pygment_trac.css" media="screen">
+<link rel="stylesheet" type="text/css" href="./stylesheets/sidebar.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../stylesheets/stylesheet.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../stylesheets/pygment_trac.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../stylesheets/sidebar.css" media="screen">
+
+    <title>ghmd-ccs by edge226</title>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>ghmd-ccs</h1>
+        <h2>An unofficial GitHub Markdown to HTML Content Creation System.</h2>
+
+<section id="downloads">
+  <a href="https://github.com/edge226/ghmd-cms/zipball/master" class="btn">Download as .zip</a>
+  <a href="https://github.com/edge226/ghmd-cms/tarball/master" class="btn">Download as .tar.gz</a>
+  <a href="https://github.com/edge226/ghmd-cms" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+</section>
+
+      </div>
+    </header>
+
+<div class="sidebar">
+  <h3> Project Websites </h3>
+  <a href="http://edge226.github.io/" class="btn btn-github"><span class="icon"></span>edge226</a>
+  <a href="http://edge226.github.io/ghmd-ccs/" class="btn btn-github"><span class="icon"></span>ghmd-ccs</a>
+  <a href="http://edge226.github.io/projects/" class="btn btn-github"><span class="icon"></span>Projects Table</a>
+</div>
+
+    <div class="container">
+      <section id="main_content">
+<h1>A bit about templates.</h1>
+
+<h4>Some reasons I think modular templates work better.</h4>
+
+<ol>
+<li><p>I find large monolithic chunks to have some severe downsides.</p>
+
+<ul>
+<li>They are more difficult to update than modular templates.</li>
+<li>They are more difficult to utilize for educational purposes.</li>
+</ul></li>
+<li><p>Here are some upsides to using modular templates.</p>
+
+<ul>
+<li>Easy to update specific parts of specific websites( update only the sidebar ).
+
+<ul>
+<li>Different Cascading Style Sheet calls per page allows for more efficient declarations and even possibly dynamic declarations requiring no modification created by directory depth.</li>
+</ul></li>
+<li>Easy to use for educational purposes.</li>
+<li>Easy to add modular content (add a new html/css module).
+
+<ul>
+<li>An example is the sidebar used in <a href="http://edge226.github.io">my site</a>.
+
+<ul>
+<li>sidebar.html gets written to the html file when a line including <code>&lt;p&gt;Sidebar.&lt;/p&gt;</code> is found in index-template.html</li>
+</ul></li>
+</ul></li>
+<li>Easy to pick and choose which parts of the site are the same and which are different among subsites.</li>
+</ul></li>
+</ol>
+
+<h4>Here is a table about the structure of the templates.</h4>
+
+<ul>
+<li>Write regex the pattern used when writing html files.</li>
+<li>Read regex is used by the update-templates program when scanning and splitting apart the index.html file.
+
+<ul>
+<li>In the case of the read/write regex being Default it means the default behavior will be to write to that file.</li>
+</ul></li>
+</ul>
+
+<table><thead>
+<tr>
+<th>File</th>
+<th>Write regex</th>
+<th>Read regex</th>
+<th>Purpose</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>index-template.html</td>
+<td>Default</td>
+<td>Default</td>
+<td>This holds the core html that all other files are injected into to create the resulting html file.</td>
+</tr>
+<tr>
+<td>css.html</td>
+<td><code>&lt;p&gt;Load CSS.&lt;/p&gt;</code></td>
+<td></td>
+<td>Holds the CCS definitions of the site.</td>
+</tr>
+<tr>
+<td>title.html</td>
+<td><code>&lt;p&gt;Title.&lt;/p&gt;</code></td>
+<td></td>
+<td>Holds the title of the site</td>
+</tr>
+<tr>
+<td>header.html</td>
+<td><code>&lt;p&gt;Header.&lt;/p&gt;</code></td>
+<td></td>
+<td>Holds the header information of the site.</td>
+</tr>
+<tr>
+<td>downloads.html</td>
+<td><code>&lt;p&gt;Downloads.&lt;/p&gt;</code></td>
+<td></td>
+<td>Holds the download buttoms used at the top of the site.</td>
+</tr>
+<tr>
+<td>sidebar.html</td>
+<td><code>&lt;p&gt;Sidebar.&lt;/p&gt;</code></td>
+<td></td>
+<td>Holds the html for a side bar if any.</td>
+</tr>
+<tr>
+<td>*.md</td>
+<td><code>&lt;p&gt;Template.&lt;/p&gt;</code></td>
+<td></td>
+<td>Contains the main content of the resulting generated html file.</td>
+</tr>
+<tr>
+<td>javascript.html</td>
+<td><code>&lt;p&gt;Javascript.&lt;/p&gt;</code></td>
+<td></td>
+<td>Contains java script definitions.</td>
+</tr>
+</tbody></table>
+
+      </section>
+    </div>
+
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-38401226-4");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>

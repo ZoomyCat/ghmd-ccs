@@ -39,44 +39,46 @@
 
     <div class="container">
       <section id="main_content">
-<h1>ghmd-ccs usage documentation.</h1>
+<h1>How to install ghmd-ccs dependencies?</h1>
 
-<h2>Purpose:</h2>
+<h2>What do I need?</h2>
 
-<p>To document how to use ghmd-ccs - GitHub Markdown to HTML Content Creation System.</p>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Command to get it.</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ruby</td>
+<td><code>pacman -S ruby</code></td>
+</tr>
+<tr>
+<td>github-markdown</td>
+<td><code>gem install github-markdown</code></td>
+</tr>
+<tr>
+<td>github-markup</td>
+<td><code>gem install github-markup</code></td>
+</tr>
+</tbody></table>
 
-<h3>Topics.</h3>
+<h2>You will get a warning similar to this:</h2>
 
-<h4>Useful Links.</h4>
+<p>WARNING: You don&#39;t have <code>/home/username/.gem/ruby/2.1.0/bin</code> in your PATH,
+gem executables will not run.</p>
 
-<ul>
-<li><a href="https://guides.github.com/features/mastering-markdown/">Mastering GitHub Markdown.</a></li>
-</ul>
+<p>To fix this you will need to add the location given in the warning above to your <code>.bashrc</code> file with the following format.</p>
 
-<h4>Installation material.</h4>
+<pre><code>PATH=&quot;$PATH:/home/username/.gem/ruby/2.1.0/bin&quot;
+export PATH
+</code></pre>
 
-<ol>
-<li><a href="local-setup.html">Local Setup.</a></li>
-<li><a href="create-website.html">Create a compatible website.</a></li>
-<li><a href="web-setup.html">Configure the website to work with ghmd-ccs.</a></li>
-<li><a href="clone-ghmd-ccs.html">Clone ghmd-ccs into the website.</a></li>
-</ol>
+<p>Your computer is now configured with all dependencies required to be able to run ghmd-css.</p>
 
-<h4>Advanced template and CSS configuration.</h4>
+<h4>Next!</h4>
 
-<ul>
-<li><a href="html-mods.html">Template html file modulation</a>
-Will eventually be handled by update-templates.</li>
-<li><a href="css-mods.html">CSS modulation</a>
-I&#39;m not too sure how this will be handled yet.</li>
-</ul>
-
-<h4>About ghmd-ccs.</h4>
-
-<ul>
-<li><a href="ghmd-ccs-info.html">Commands and information</a></li>
-<li><a href="about-templates.html">A bit about templates.</a></li>
-</ul>
+<p><a href="create-website.html">Create a compatible website.</a></p>
 
       </section>
     </div>

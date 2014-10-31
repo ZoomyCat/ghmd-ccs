@@ -12,18 +12,18 @@
 
 #### Installation material.
 
-1. [Local Setup.](local-setup.md)
-2. [Create a compatible website.](create-website.md)
-3. [Configure the website to work with ghmd-ccs.](web-setup.md)
-4. [Clone ghmd-ccs into the website.](clone-ghmd-ccs.md)
+1. [Local Setup.](local-setup.html)
+2. [Create a compatible website.](create-website.html)
+3. [Configure the website to work with ghmd-ccs.](web-setup.html)
+4. [Clone ghmd-ccs into the website.](clone-ghmd-ccs.html)
 
 #### Advanced template and CSS configuration.
-* [Template html file modulation](html-mods.md)
+* [Template html file modulation](html-mods.html)
   Will eventually be handled by update-templates.
-* [CSS modulation](css-mods.md)
+* [CSS modulation](css-mods.html)
   I'm not too sure how this will be handled yet.
 
 #### About ghmd-ccs.
 
-* [Commands and information](ghmd-ccs-info.md)
-* [A bit about templates.](about-templates.md)
+* [Commands and information](ghmd-ccs-info.html)
+* [A bit about templates.](about-templates.html)

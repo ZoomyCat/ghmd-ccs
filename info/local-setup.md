@@ -8,8 +8,10 @@ pacman -S ruby
 apt-get install ruby
 yum --install ruby
 ```
-github-markdown | `gem install github-markdown`
-github-markup | `gem install github-markup`
+#### github-markdown
+`gem install github-markdown`
+#### github-markup
+`gem install github-markup`
 
 ## You will get a warning similar to this:
 WARNING: You don't have `/home/username/.gem/ruby/2.1.0/bin` in your PATH,

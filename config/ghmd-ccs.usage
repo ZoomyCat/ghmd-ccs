@@ -30,10 +30,10 @@ Examples:
 
 "
 
-index_usage="
-Name:           index
+update_usage="
+Name:           update
 
-Description:    Will create a list of all README.md files in the README.index file at the root of the site.
+Description:    update will find all README.md files and build an appropriate index.html using the README.md as the Main Content. This utilizes a html template structure to create the rest of the page.
 
 Usage:          index <Options>
 

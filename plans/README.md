@@ -13,4 +13,4 @@ The ability to process .md files of names other than README.md where README.md a
 
 I plan on working on a way to read a index.html file and create an appropriate template structure that is easily updated.
 
-If you're interested in this then you probably want to check out: [A bit about templates.](../usage/templates.md)
+If you're interested in this then you probably want to check out: [A bit about templates.](../usage/about-templates.html)

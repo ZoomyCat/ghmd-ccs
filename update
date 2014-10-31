@@ -47,25 +47,24 @@ get_template(){
     then
     #printf '\n%s %s%s\n' "Setting template to:" "$loc" "template/index-template.html"
     template="$loc""template/index-template.html"
+    loadcss="$loc""template/css.html"
+    title="$loc""template/title.html"
+    header="$loc""template/header.html"
     downloads="$loc""template/downloads.html"
     sidebar="$loc""template/sidebar.html"
-    loadcss="$loc""template/css.html"
+    js="$loc""template/javascript.html"
 
   else
     #printf '\n%s %s\n' "loc is" "$loc"
     #pwd
     local temp_loc=${loc%/*/}
-    #printf '\n%s %s\n' "temp_loc is" "$temp_loc"
     template="$temp_loc""/template/index-template.html"
-    #printf '\n%s %s\n' "temp_loc is" "$temp_loc"
-    downloads="$temp_loc""/template/downloads.html"
-    #printf '\n%s %s\n' "temp_loc is" "$temp_loc"
-    sidebar="$temp_loc""/template/sidebar.html"
     loadcss="$temp_loc""/template/css.html"
-    #printf '\n%s %s\n' "template has been set to:" "$template"
-    #printf '\n%s %s\n' "downloads has been set to:" "$downloads"
-    #printf '\n%s %s\n' "sidebar has been set to:" "$sidebar"
-    #printf '\n%s %s\n' "loadcss has been set to:" "$loadcss"
+    title="$loc""/template/title.html"
+    header="$loc""/template/header.html"
+    downloads="$temp_loc""/template/downloads.html"
+    sidebar="$temp_loc""/template/sidebar.html"
+    js="$loc""/template/javascript.html"
   fi
 }
 
@@ -103,7 +102,26 @@ main(){
         #printf '\n%s %s\n' "The template file is:" "$template"
 
       while IFS= read -r line; do ## Read through the file.
-        if [[ "$line" = *"<p>Downloads.</p>"* ]]
+
+        if [[ "$line" = *" <p>Load CSS.</p>"* ]]
+          then
+          printf '\n%s %s %s %s\n\n' "Injecting" "$loadcss" "into" "$loc$mu"
+          cat "$loadcss"
+          cat "$loadcss" >> "$loc$mu"
+          printf '\n%s\n' "Injection completed."
+        elif [[ "$line" = *"<p>Title.</p>"* ]]
+          then
+          printf '\n%s %s %s %s\n\n' "Injecting" "$title" "into" "$loc$mu"
+          cat "$title"
+          cat "$title" >> "$loc$mu"
+          printf '\n%s\n' "Injection completed."
+        elif [[ "$line" = *"<p>Header.</p>"* ]]
+          then
+          printf '\n%s %s %s %s\n\n' "Injecting" "$header" "into" "$loc$mu"
+          cat "$header"
+          cat "$header" >> "$loc$mu"
+          printf '\n%s\n' "Injection completed."
+        elif [[ "$line" = *"<p>Downloads.</p>"* ]]
           then
           printf '\n%s %s %s %s\n\n' "Injecting" "$downloads" "into" "$loc$mu"
           cat "$downloads"
@@ -115,11 +133,11 @@ main(){
           cat "$sidebar"
           cat "$sidebar" >> "$loc$mu"
           printf '\n%s\n' "Injection completed."
-        elif [[ "$line" = *"  <p>Load CSS.</p>"* ]]
+        elif [[ "$line" = *"<p>Sidebar.</p>"* ]]
           then
-          printf '\n%s %s %s %s\n\n' "Injecting" "$loadcss" "into" "$loc$mu"
-          cat "$loadcss"
-          cat "$loadcss" >> "$loc$mu"
+          printf '\n%s %s %s %s\n\n' "Injecting" "$js" "into" "$loc$mu"
+          cat "$js"
+          cat "$js" >> "$loc$mu"
           printf '\n%s\n' "Injection completed."
         elif [[ "$line" = *"<p>Template.</p>"* ]]
           then

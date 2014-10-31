@@ -15,3 +15,5 @@ git clone git@github.com:edge226/ghmd-ccs.git
 ### Direct links:
 
 Direct links are available at the top of the page.
+
+#### Back to the [info](http://edge226.github.io/ghmd-ccs/info/) page

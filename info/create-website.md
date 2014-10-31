@@ -1,4 +1,4 @@
-# Steps to creating a website on GitHub.
+## Steps to creating a website on GitHub.
 
 1. If you do not already have a username.github.io repository ( you need one ) or if you need to create a repository website you should check out the [User, Organization, and Project Pages](https://help.github.com/articles/user-organization-and-project-pages) GitHub help documentation.
   * The repository name will be used as the project name during website generation.

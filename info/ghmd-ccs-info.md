@@ -1,4 +1,4 @@
-# Table of ghmd-ccs information.
+## Table of ghmd-ccs information.
 
 command | created | completed | used by user | what it does or will do
 ----|----|----|----|----

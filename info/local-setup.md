@@ -1,6 +1,6 @@
-# How to install ghmd-ccs dependencies?
+## How to install ghmd-ccs dependencies?
 
-## What do I need?
+### What do I need?
 Name | Command to get it.
 ----|----
 ruby | `pacman -S ruby`

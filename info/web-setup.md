@@ -1,4 +1,4 @@
-# Steps to configuring website on gihub.io to work with ghmd-ccs.
+## Steps to configuring website on gihub.io to work with ghmd-ccs.
 
 For a basic setup this is very easy:
 

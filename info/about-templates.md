@@ -1,4 +1,4 @@
-# A bit about templates.
+## A bit about templates.
 
 #### Some reasons I think modular templates work better.
 1. I find large monolithic chunks to have some severe downsides.

@@ -1,6 +1,6 @@
-# ghmd-ccs usage documentation.
+## ghmd-ccs usage documentation.
 
-## Purpose:
+### Purpose:
 
   To document how to use ghmd-ccs - GitHub Markdown to HTML Content Creation System.
 

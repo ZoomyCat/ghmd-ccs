@@ -32,12 +32,12 @@ get_loc(){
 }
 
 get_name(){
-  printf '\n%s %s\n' "location is currently" "$loc"
+  #printf '\n%s %s\n' "location is currently" "$loc"
   if [[ "$loc" != "" ]] && [[ "$loc" != "./" ]]
     then
     name=${loc%"/"}
     name=${name##*/}
-    printf '\n%s %s\n' "name is:" "$name"
+    #printf '\n%s %s\n' "name is:" "$name"
   fi
 }
 
@@ -45,27 +45,27 @@ get_template(){
   get_name
   if [[ -f  "$loc""template/index-template.html" ]]
     then
-    printf '\n%s %s%s\n' "Setting template to:" "$loc" "template/index-template.html"
+    #printf '\n%s %s%s\n' "Setting template to:" "$loc" "template/index-template.html"
     template="$loc""template/index-template.html"
     downloads="$loc""template/downloads.html"
     sidebar="$loc""template/sidebar.html"
     loadcss="$loc""template/css.html"
 
   else
-    printf '\n%s %s\n' "loc is" "$loc"
-    pwd
+    #printf '\n%s %s\n' "loc is" "$loc"
+    #pwd
     local temp_loc=${loc%/*/}
-    printf '\n%s %s\n' "temp_loc is" "$temp_loc"
+    #printf '\n%s %s\n' "temp_loc is" "$temp_loc"
     template="$temp_loc""/template/index-template.html"
-    printf '\n%s %s\n' "temp_loc is" "$temp_loc"
+    #printf '\n%s %s\n' "temp_loc is" "$temp_loc"
     downloads="$temp_loc""/template/downloads.html"
-    printf '\n%s %s\n' "temp_loc is" "$temp_loc"
+    #printf '\n%s %s\n' "temp_loc is" "$temp_loc"
     sidebar="$temp_loc""/template/sidebar.html"
     loadcss="$temp_loc""/template/css.html"
-    printf '\n%s %s\n' "template has been set to:" "$template"
-    printf '\n%s %s\n' "downloads has been set to:" "$downloads"
-    printf '\n%s %s\n' "sidebar has been set to:" "$sidebar"
-    printf '\n%s %s\n' "loadcss has been set to:" "$loadcss"
+    #printf '\n%s %s\n' "template has been set to:" "$template"
+    #printf '\n%s %s\n' "downloads has been set to:" "$downloads"
+    #printf '\n%s %s\n' "sidebar has been set to:" "$sidebar"
+    #printf '\n%s %s\n' "loadcss has been set to:" "$loadcss"
   fi
 }
 
@@ -77,8 +77,8 @@ main(){
 
       get_template
 
-      printf '\n\n%s %s\n' "The location of the current output file is:" "$loc$mu"
-      printf '%s %s\n' "The current page is: " "$page"
+      ##printf '\n\n%s %s\n' "The location of the current output file is:" "$loc$mu"
+      ##printf '%s %s\n' "The current page is: " "$page"
 
         mu=${page##*/}
         if [[ "$mu" = "README.md" ]]
@@ -88,7 +88,7 @@ main(){
           mu=${mu%%.md}
           mu="$mu.html"
         fi
-        printf '\n%s %s\n' "mu is set to:" "$mu"
+        ##printf '\n%s %s\n' "mu is set to:" "$mu"
 
       if [[ -f "$loc$mu" ]]
         then
@@ -98,30 +98,30 @@ main(){
       if [[ ! -f "$loc$mu" ]]
         then
         touch "$loc$mu"
-        printf '\n%s %s\n' "Now we are writing to:" "$loc$mu"
+        printf '\n%s %s %s %s\n' "Now we are writing" "$template" "to" "$loc$mu"
       fi
-        printf '\n%s %s\n' "The template file is:" "$template"
+        #printf '\n%s %s\n' "The template file is:" "$template"
 
       while IFS= read -r line; do ## Read through the file.
         if [[ "$line" = *"<p>Downloads.</p>"* ]]
           then
-          ## printf '\n%s %s\n' "This is what downloads is set to:" "$downloads"
-          ##cat "$downloads"
+          printf '\n%s %s %s %s\n\n' "Injecting" "$downloads" "into" "$loc$mu"
+          cat "$downloads"
           cat "$downloads" >> "$loc$mu"
         elif [[ "$line" = *"<p>Sidebar.</p>"* ]]
           then
-          printf '\n%s %s\n' "This is what sidebar is set to:" "$sidebar"
-          ##cat "$sidebar"
+          printf '\n%s %s %s %s\n\n' "Injecting" "$sidebar" "into" "$loc$mu"
+          cat "$sidebar"
           cat "$sidebar" >> "$loc$mu"
         elif [[ "$line" = *"  <p>Load CSS.</p>"* ]]
             then
-            printf '\n%s %s\n' "This is what loadcss is set to:" "$loadcss"
-            ##cat "$loadcss"
+            printf '\n%s %s %s %s\n\n' "Injecting" "$loadcss" "into" "$loc$mu"
+            cat "$loadcss"
             cat "$loadcss" >> "$loc$mu"
         elif [[ "$line" = *"<p>Template.</p>"* ]]
           then
-          #printf '\n%s %s %s %s %s %s\n' "Running the " "$g2h" "Command and it should write this output to" "$loc$mu" "using data from" "$page"
-          #"$g2h" -d "$page" ## >> "$loc$mu"
+          printf '\n%s %s %s %s\n\n' "Injecting" "$page" "into" "$loc$mu"
+          "$g2h" -d "$page"
           "$g2h" -d "$page" >> "$loc$mu"
         else
           #printf '%s\n' "$line"

@@ -11,7 +11,7 @@
 conf=$( find . -name ghmd-ccs.config -type f -print )
 usage=$( find . -name ghmd-ccs.usage -type f -print )
 
-printf '\n\n%s %s %s\n' "conf and usage are:" "$conf" "$usage"
+## printf '\n\n%s %s %s\n' "conf and usage are:" "$conf" "$usage"
 
 source "$conf"
 source "$usage"

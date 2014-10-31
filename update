@@ -11,10 +11,8 @@ g2h=$( find . -name ghmd2html -type f -print )
 source "$conf"
 source "$usage"
 
-while getopts "d:m:h" opt; do
+while getopts "h" opt; do
     case "$opt" in
-        m) mu=$OPTARG;;
-        d)    md=$OPTARG;;
         h)      printf '%s\n' "$update_usage"; exit 0;;
         \?)     printf '%s\n' "$update_usage" >&2; exit 1;;
     esac
@@ -32,12 +30,10 @@ get_loc(){
 }
 
 get_name(){
-  #printf '\n%s %s\n' "location is currently" "$loc"
   if [[ "$loc" != "" ]] && [[ "$loc" != "./" ]]
     then
     name=${loc%"/"}
     name=${name##*/}
-    #printf '\n%s %s\n' "name is:" "$name"
   fi
 }
 
@@ -45,7 +41,6 @@ get_template(){
   get_name
   if [[ -f  "$loc""template/index-template.html" ]]
     then
-    #printf '\n%s %s%s\n' "Setting template to:" "$loc" "template/index-template.html"
     template="$loc""template/index-template.html"
     loadcss="$loc""template/css.html"
     title="$loc""template/title.html"
@@ -53,10 +48,7 @@ get_template(){
     downloads="$loc""template/downloads.html"
     sidebar="$loc""template/sidebar.html"
     js="$loc""template/javascript.html"
-
   else
-    #printf '\n%s %s\n' "loc is" "$loc"
-    #pwd
     local temp_loc=${loc%/*/}
     template="$temp_loc""/template/index-template.html"
     loadcss="$temp_loc""/template/css.html"
@@ -73,12 +65,7 @@ main(){
     for page in "${index_md[@]}"
     do
       get_loc "$page"
-
       get_template
-
-      ##printf '\n\n%s %s\n' "The location of the current output file is:" "$loc$mu"
-      ##printf '%s %s\n' "The current page is: " "$page"
-
         mu=${page##*/}
         if [[ "$mu" = "README.md" ]]
           then
@@ -87,22 +74,16 @@ main(){
           mu=${mu%%.md}
           mu="$mu.html"
         fi
-        ##printf '\n%s %s\n' "mu is set to:" "$mu"
-
       if [[ -f "$loc$mu" ]]
         then
         rm "$loc$mu"
       fi
-
       if [[ ! -f "$loc$mu" ]]
         then
         touch "$loc$mu"
         printf '\n\n%s %s %s %s\n\n' "Now we are writing" "$template" "to" "$loc$mu"
       fi
-        #printf '\n%s %s\n' "The template file is:" "$template"
-
       while IFS= read -r line; do ## Read through the file.
-
         if [[ "$line" = *" <p>Load CSS.</p>"* ]]
           then
           printf '\n%s %s %s %s\n\n' "Injecting" "$loadcss" "into" "$loc$mu"

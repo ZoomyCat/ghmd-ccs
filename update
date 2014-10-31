@@ -47,9 +47,9 @@ get_template(){
     then
     printf '\n%s %s%s\n' "Setting template to:" "$loc" "template/index-template.html"
     template="$loc""template/index-template.html"
-    downloads="$loc""/template/downloads.html"
-    sidebar="$loc""/template/sidebar.html"
-    loadcss="$loc""/template/css.html"
+    downloads="$loc""template/downloads.html"
+    sidebar="$loc""template/sidebar.html"
+    loadcss="$loc""template/css.html"
 
   else
     printf '\n%s %s\n' "loc is" "$loc"
@@ -80,16 +80,15 @@ main(){
       printf '\n\n%s %s\n' "The location of the current output file is:" "$loc$mu"
       printf '%s %s\n' "The current page is: " "$page"
 
-      if [[ "$page" = *"README.md" ]]
-        then
-        mu="index.html"
-        printf '\n%s %s\n' "mu is set to:" "$mu"
-      else
         mu=${page##*/}
-        mu=${mu%%.md}
-        mu="$mu.html"
+        if [[ "$mu" = "README.md" ]]
+          then
+          mu="index.html"
+        else
+          mu=${mu%%.md}
+          mu="$mu.html"
+        fi
         printf '\n%s %s\n' "mu is set to:" "$mu"
-      fi
 
       if [[ -f "$loc$mu" ]]
         then
@@ -107,17 +106,17 @@ main(){
         if [[ "$line" = *"<p>Downloads.</p>"* ]]
           then
           ## printf '\n%s %s\n' "This is what downloads is set to:" "$downloads"
-            cat "$downloads"
-            cat "$downloads" >> "$loc$mu"
+          ##cat "$downloads"
+          cat "$downloads" >> "$loc$mu"
         elif [[ "$line" = *"<p>Sidebar.</p>"* ]]
           then
           printf '\n%s %s\n' "This is what sidebar is set to:" "$sidebar"
-          cat "$sidebar"
+          ##cat "$sidebar"
           cat "$sidebar" >> "$loc$mu"
         elif [[ "$line" = *"  <p>Load CSS.</p>"* ]]
             then
             printf '\n%s %s\n' "This is what loadcss is set to:" "$loadcss"
-            cat "$loadcss"
+            ##cat "$loadcss"
             cat "$loadcss" >> "$loc$mu"
         elif [[ "$line" = *"<p>Template.</p>"* ]]
           then

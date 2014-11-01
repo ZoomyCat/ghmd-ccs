@@ -1,13 +1,11 @@
 #!/usr/bin/env bash
 ##Created by Edward "edge226" Tunnah.
 
-## This command will index the website for all README.md files that exist saving to a variable and output to a new index.html.
+## This command will index the website for all .md files that exist merging it with some template html to create a final product.
 
 conf=$( find . -name ghmd-ccs.config -type f -print )
 usage=$( find . -name ghmd-ccs.usage -type f -print )
 g2h=$( find . -name ghmd2html -type f -print )
-
-
 source "$conf"
 source "$usage"
 
@@ -18,28 +16,20 @@ while getopts "h" opt; do
     esac
 done
 
-get_mds(){
+get_mds(){ ## Find all the .md files and save them to an index_md array.
   index_md=( $( find . -name "$md" -type f -print ) )
 }
 
-get_loc(){
+get_loc(){ ## Grab the location and strip the .md file off the start then add the proceeding /
   unset loc
   local struct="$1"
   loc=${struct%/*.md}
   loc="$loc/"
 }
 
-get_name(){
-  if [[ "$loc" != "" ]] && [[ "$loc" != "./" ]]
-    then
-    name=${loc%"/"}
-    name=${name##*/}
-  fi
-}
-
 get_template(){
-  get_name
   if [[ -f  "$loc""template/index-template.html" ]]
+    ## If the index-template.html exists where we expect it to then set all the template variables.
     then
     template="$loc""template/index-template.html"
     meta="$loc""template/meta.html"
@@ -50,91 +40,87 @@ get_template(){
     sidebar="$loc""template/sidebar.html"
     js="$loc""template/javascript.html"
   else
+    ## Move remove a subdirectory until we find the corrct directory and then
+    ## set the template variables for usage.
     local temp_loc=${loc%/*/}
-    template="$temp_loc""/template/index-template.html"
-    meta="$temp_loc""/template/meta.html"
-    loadcss="$temp_loc""/template/css.html"
-    title="$loc""/template/title.html"
-    header="$loc""/template/header.html"
-    downloads="$temp_loc""/template/downloads.html"
-    sidebar="$temp_loc""/template/sidebar.html"
-    js="$loc""/template/javascript.html"
+    temp_loc="$temp_loc/"
+    while [[ ! -f "$temp_loc""template/index-template.html" ]]
+    do
+      temp_loc=${temp_loc%/*/}
+      temp_loc="$temp_loc/"
+    done
+    template="$temp_loc""template/index-template.html"
+    meta="$temp_loc""template/meta.html"
+    loadcss="$temp_loc""template/css.html"
+    title="$temp_loc""template/title.html"
+    header="$temp_loc""template/header.html"
+    downloads="$temp_loc""template/downloads.html"
+    sidebar="$temp_loc""template/sidebar.html"
+    js="$temp_loc""template/javascript.html"
   fi
 }
 
+## check if the lines contain an injection tag and if they do inject the corresponding file.
+inject_html(){
+  unset i pass
+  for tag in "${inject_tag[@]}"
+  do
+    if [[ "$i" = "" ]]
+      then
+      i=0
+    fi
+    if [[ "$line" = *"$tag"* ]]
+      then
+      typeset -n local ref=${inject_file[$i]}
+      printf '\n%s %s %s %s\n\n' "Injecting" "$ref" "into" "$loc$mu"
+      cat "$ref"
+      cat "$ref" >> "$loc$mu"
+      printf '\n%s\n' "Injection completed."
+      pass=0
+      break
+    fi
+    i="$i"+1
+  done
+}
+
 main(){
-    get_mds
-    for page in "${index_md[@]}"
+    get_mds  ## grab the markdown files.
+    for page in "${index_md[@]}"  ## Create a site for each markdown file.
     do
-      get_loc "$page"
-      get_template
-        mu=${page##*/}
+      get_loc "$page"  ## get the location of the markdown file.
+      get_template  ## set all template variables.
+        mu=${page##*/}  ## remove all prefixes to get the name of the markdown file.
         if [[ "$mu" = "README.md" ]]
           then
-          mu="index.html"
+          mu="index.html" ## If the markdown file is README.md then use index.html
         else
+        ## Otherwise strip the .md extension and use the name of the .md file as the name of the html file..
           mu=${mu%%.md}
           mu="$mu.html"
         fi
       if [[ -f "$loc$mu" ]]
+        ## If the markup file already exists then remove it.
         then
         rm "$loc$mu"
       fi
       if [[ ! -f "$loc$mu" ]]
+        ## Create a new blank markup file.
         then
         touch "$loc$mu"
         printf '\n\n%s %s %s %s\n\n' "Now we are writing" "$template" "to" "$loc$mu"
       fi
       while IFS= read -r line; do ## Read through the file.
-        if [[ "$line" = *" <p>Meta.</p>"* ]]
-          then
-          printf '\n%s %s %s %s\n\n' "Injecting" "$meta" "into" "$loc$mu"
-          cat "$meta"
-          cat "$meta" >> "$loc$mu"
-          printf '\n%s\n' "Injection completed."
-        elif [[ "$line" = *" <p>Load CSS.</p>"* ]]
-          then
-          printf '\n%s %s %s %s\n\n' "Injecting" "$loadcss" "into" "$loc$mu"
-          cat "$loadcss"
-          cat "$loadcss" >> "$loc$mu"
-          printf '\n%s\n' "Injection completed."
-        elif [[ "$line" = *"<p>Title.</p>"* ]]
-          then
-          printf '\n%s %s %s %s\n\n' "Injecting" "$title" "into" "$loc$mu"
-          cat "$title"
-          cat "$title" >> "$loc$mu"
-          printf '\n%s\n' "Injection completed."
-        elif [[ "$line" = *"<p>Header.</p>"* ]]
-          then
-          printf '\n%s %s %s %s\n\n' "Injecting" "$header" "into" "$loc$mu"
-          cat "$header"
-          cat "$header" >> "$loc$mu"
-          printf '\n%s\n' "Injection completed."
-        elif [[ "$line" = *"<p>Downloads.</p>"* ]]
-          then
-          printf '\n%s %s %s %s\n\n' "Injecting" "$downloads" "into" "$loc$mu"
-          cat "$downloads"
-          cat "$downloads" >> "$loc$mu"
-          printf '\n%s\n' "Injection completed."
-        elif [[ "$line" = *"<p>Sidebar.</p>"* ]]
-          then
-          printf '\n%s %s %s %s\n\n' "Injecting" "$sidebar" "into" "$loc$mu"
-          cat "$sidebar"
-          cat "$sidebar" >> "$loc$mu"
-          printf '\n%s\n' "Injection completed."
-        elif [[ "$line" = *"<p>Sidebar.</p>"* ]]
-          then
-          printf '\n%s %s %s %s\n\n' "Injecting" "$js" "into" "$loc$mu"
-          cat "$js"
-          cat "$js" >> "$loc$mu"
-          printf '\n%s\n' "Injection completed."
-        elif [[ "$line" = *"<p>Template.</p>"* ]]
+        inject_html  ##  Check for html injection and write if needed.
+        if [[ "$line" = *"<p>Template.</p>"* ]] && [[ "$pass" != "0" ]]
+          ## If the line is the Template then write the markdown file has markup.
           then
           printf '\n%s %s %s %s\n\n' "Injecting" "$page" "into" "$loc$mu"
           "$g2h" -d "$page"
           "$g2h" -d "$page" >> "$loc$mu"
           printf '\n%s\n' "Injection completed."
-        else
+        elif [[ "$pass" != "0" ]]
+          ## If nothing else wrote a line then this should.
+          then
           printf '%s\n' "$line"
           printf '%s\n' "$line" >> "$loc$mu"
         fi

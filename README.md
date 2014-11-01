@@ -15,4 +15,4 @@ The html files created in this process will overwrite the previous versions, No 
 
 ### Got any more info?
 
-Check out the [info](http://edge226.github.io/ghmd-ccs/info/) page.
+Check out the [info](http://edge226.github.io/ghmd-ccs/info/) page on installing, configuring and using ghmd-ccs.

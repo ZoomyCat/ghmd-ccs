@@ -46,6 +46,7 @@ get_template(){
     temp_loc="$temp_loc/"
     while [[ ! -f "$temp_loc""template/index-template.html" ]]
     do
+      printf '\n%s %s\n' "temp_loc is" "$temp_loc"
       temp_loc=${temp_loc%/*/}
       temp_loc="$temp_loc/"
     done

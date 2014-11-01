@@ -42,6 +42,7 @@ get_template(){
   if [[ -f  "$loc""template/index-template.html" ]]
     then
     template="$loc""template/index-template.html"
+    meta="$loc""template/meta.html"
     loadcss="$loc""template/css.html"
     title="$loc""template/title.html"
     header="$loc""template/header.html"
@@ -51,6 +52,7 @@ get_template(){
   else
     local temp_loc=${loc%/*/}
     template="$temp_loc""/template/index-template.html"
+    meta="$temp_loc""/template/meta.html"
     loadcss="$temp_loc""/template/css.html"
     title="$loc""/template/title.html"
     header="$loc""/template/header.html"
@@ -85,6 +87,12 @@ main(){
       fi
       while IFS= read -r line; do ## Read through the file.
         if [[ "$line" = *" <p>Load CSS.</p>"* ]]
+          then
+          printf '\n%s %s %s %s\n\n' "Injecting" "$meta" "into" "$loc$mu"
+          cat "$meta"
+          cat "$meta" >> "$loc$mu"
+          printf '\n%s\n' "Injection completed."
+        elif [[ "$line" = *" <p>Load CSS.</p>"* ]]
           then
           printf '\n%s %s %s %s\n\n' "Injecting" "$loadcss" "into" "$loc$mu"
           cat "$loadcss"

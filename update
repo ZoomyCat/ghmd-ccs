@@ -11,10 +11,8 @@ g2h=$( find . -name ghmd2html -type f -print )
 source "$conf"
 source "$usage"
 
-while getopts "d:m:h" opt; do
+while getopts "h" opt; do
     case "$opt" in
-        m) mu=$OPTARG;;
-        d)    md=$OPTARG;;
         h)      printf '%s\n' "$update_usage"; exit 0;;
         \?)     printf '%s\n' "$update_usage" >&2; exit 1;;
     esac
@@ -32,12 +30,10 @@ get_loc(){
 }
 
 get_name(){
-  printf '\n%s %s\n' "location is currently" "$loc"
   if [[ "$loc" != "" ]] && [[ "$loc" != "./" ]]
     then
     name=${loc%"/"}
     name=${name##*/}
-    printf '\n%s %s\n' "name is:" "$name"
   fi
 }
 
@@ -45,27 +41,24 @@ get_template(){
   get_name
   if [[ -f  "$loc""template/index-template.html" ]]
     then
-    printf '\n%s %s%s\n' "Setting template to:" "$loc" "template/index-template.html"
     template="$loc""template/index-template.html"
+    meta="$loc""template/meta.html"
+    loadcss="$loc""template/css.html"
+    title="$loc""template/title.html"
+    header="$loc""template/header.html"
     downloads="$loc""template/downloads.html"
     sidebar="$loc""template/sidebar.html"
-    loadcss="$loc""template/css.html"
-
+    js="$loc""template/javascript.html"
   else
-    printf '\n%s %s\n' "loc is" "$loc"
-    pwd
     local temp_loc=${loc%/*/}
-    printf '\n%s %s\n' "temp_loc is" "$temp_loc"
     template="$temp_loc""/template/index-template.html"
-    printf '\n%s %s\n' "temp_loc is" "$temp_loc"
-    downloads="$temp_loc""/template/downloads.html"
-    printf '\n%s %s\n' "temp_loc is" "$temp_loc"
-    sidebar="$temp_loc""/template/sidebar.html"
+    meta="$temp_loc""/template/meta.html"
     loadcss="$temp_loc""/template/css.html"
-    printf '\n%s %s\n' "template has been set to:" "$template"
-    printf '\n%s %s\n' "downloads has been set to:" "$downloads"
-    printf '\n%s %s\n' "sidebar has been set to:" "$sidebar"
-    printf '\n%s %s\n' "loadcss has been set to:" "$loadcss"
+    title="$loc""/template/title.html"
+    header="$loc""/template/header.html"
+    downloads="$temp_loc""/template/downloads.html"
+    sidebar="$temp_loc""/template/sidebar.html"
+    js="$loc""/template/javascript.html"
   fi
 }
 
@@ -74,12 +67,7 @@ main(){
     for page in "${index_md[@]}"
     do
       get_loc "$page"
-
       get_template
-
-      printf '\n\n%s %s\n' "The location of the current output file is:" "$loc$mu"
-      printf '%s %s\n' "The current page is: " "$page"
-
         mu=${page##*/}
         if [[ "$mu" = "README.md" ]]
           then
@@ -88,46 +76,70 @@ main(){
           mu=${mu%%.md}
           mu="$mu.html"
         fi
-        printf '\n%s %s\n' "mu is set to:" "$mu"
-
       if [[ -f "$loc$mu" ]]
         then
         rm "$loc$mu"
       fi
-
       if [[ ! -f "$loc$mu" ]]
         then
         touch "$loc$mu"
-        printf '\n%s %s\n' "Now we are writing to:" "$loc$mu"
+        printf '\n\n%s %s %s %s\n\n' "Now we are writing" "$template" "to" "$loc$mu"
       fi
-        printf '\n%s %s\n' "The template file is:" "$template"
-
       while IFS= read -r line; do ## Read through the file.
-        if [[ "$line" = *"<p>Downloads.</p>"* ]]
+        if [[ "$line" = *" <p>Load CSS.</p>"* ]]
           then
-          ## printf '\n%s %s\n' "This is what downloads is set to:" "$downloads"
-          ##cat "$downloads"
+          printf '\n%s %s %s %s\n\n' "Injecting" "$meta" "into" "$loc$mu"
+          cat "$meta"
+          cat "$meta" >> "$loc$mu"
+          printf '\n%s\n' "Injection completed."
+        elif [[ "$line" = *" <p>Load CSS.</p>"* ]]
+          then
+          printf '\n%s %s %s %s\n\n' "Injecting" "$loadcss" "into" "$loc$mu"
+          cat "$loadcss"
+          cat "$loadcss" >> "$loc$mu"
+          printf '\n%s\n' "Injection completed."
+        elif [[ "$line" = *"<p>Title.</p>"* ]]
+          then
+          printf '\n%s %s %s %s\n\n' "Injecting" "$title" "into" "$loc$mu"
+          cat "$title"
+          cat "$title" >> "$loc$mu"
+          printf '\n%s\n' "Injection completed."
+        elif [[ "$line" = *"<p>Header.</p>"* ]]
+          then
+          printf '\n%s %s %s %s\n\n' "Injecting" "$header" "into" "$loc$mu"
+          cat "$header"
+          cat "$header" >> "$loc$mu"
+          printf '\n%s\n' "Injection completed."
+        elif [[ "$line" = *"<p>Downloads.</p>"* ]]
+          then
+          printf '\n%s %s %s %s\n\n' "Injecting" "$downloads" "into" "$loc$mu"
+          cat "$downloads"
           cat "$downloads" >> "$loc$mu"
+          printf '\n%s\n' "Injection completed."
         elif [[ "$line" = *"<p>Sidebar.</p>"* ]]
           then
-          printf '\n%s %s\n' "This is what sidebar is set to:" "$sidebar"
-          ##cat "$sidebar"
+          printf '\n%s %s %s %s\n\n' "Injecting" "$sidebar" "into" "$loc$mu"
+          cat "$sidebar"
           cat "$sidebar" >> "$loc$mu"
-        elif [[ "$line" = *"  <p>Load CSS.</p>"* ]]
-            then
-            printf '\n%s %s\n' "This is what loadcss is set to:" "$loadcss"
-            ##cat "$loadcss"
-            cat "$loadcss" >> "$loc$mu"
+          printf '\n%s\n' "Injection completed."
+        elif [[ "$line" = *"<p>Sidebar.</p>"* ]]
+          then
+          printf '\n%s %s %s %s\n\n' "Injecting" "$js" "into" "$loc$mu"
+          cat "$js"
+          cat "$js" >> "$loc$mu"
+          printf '\n%s\n' "Injection completed."
         elif [[ "$line" = *"<p>Template.</p>"* ]]
           then
-          #printf '\n%s %s %s %s %s %s\n' "Running the " "$g2h" "Command and it should write this output to" "$loc$mu" "using data from" "$page"
-          #"$g2h" -d "$page" ## >> "$loc$mu"
+          printf '\n%s %s %s %s\n\n' "Injecting" "$page" "into" "$loc$mu"
+          "$g2h" -d "$page"
           "$g2h" -d "$page" >> "$loc$mu"
+          printf '\n%s\n' "Injection completed."
         else
-          #printf '%s\n' "$line"
+          printf '%s\n' "$line"
           printf '%s\n' "$line" >> "$loc$mu"
         fi
       done < "$template" ## The template file is what is read.
+      printf '\n%s %s %s\n' "Writing of" "$template" "completed."
     done
     exit 0
 }

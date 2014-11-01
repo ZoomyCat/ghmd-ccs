@@ -23,6 +23,7 @@
 File | Write regex | Read regex | Purpose
 ----|----|----|----
 index-template.html | Default | Default | This holds the core html that all other files are injected into to create the resulting html file.
+meta.html | `<p>Meta.</p>` |  | Holds the meta information of the site.
 css.html | `<p>Load CSS.</p>` | | Holds the CCS definitions of the site.
 title.html | `<p>Title.</p>` | | Holds the title of the site
 header.html | `<p>Header.</p>` | | Holds the header information of the site.

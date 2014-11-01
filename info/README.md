@@ -17,6 +17,9 @@
 3. [Configure the website to work with ghmd-ccs.](web-setup.html)
 4. [Clone ghmd-ccs into the website.](clone-ghmd-ccs.html)
 
+#### Usage.
+* [Updating your website.](updating.html)
+
 #### Advanced template and CSS configuration.
 * [Template html file modulation](html-mods.html)
   Will eventually be handled by update-templates.

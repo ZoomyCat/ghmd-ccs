@@ -2,7 +2,7 @@
 
 ### Purpose:
 
-  To document how to use ghmd-ccs - GitHub Markdown to HTML Content Creation System.
+  Documentation on how to install, Configure and use ghmd-ccs - GitHub Markdown to HTML Content Creation System.
 
 ### Topics.
 

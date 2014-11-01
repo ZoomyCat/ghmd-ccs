@@ -86,7 +86,7 @@ main(){
         printf '\n\n%s %s %s %s\n\n' "Now we are writing" "$template" "to" "$loc$mu"
       fi
       while IFS= read -r line; do ## Read through the file.
-        if [[ "$line" = *" <p>Load CSS.</p>"* ]]
+        if [[ "$line" = *" <p>Meta.</p>"* ]]
           then
           printf '\n%s %s %s %s\n\n' "Injecting" "$meta" "into" "$loc$mu"
           cat "$meta"

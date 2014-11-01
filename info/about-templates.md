@@ -16,11 +16,12 @@
 
 #### Here is a table about the structure of the templates.
 
-* Write regex the pattern used when writing html files.
+* The Write tag is used when writing html files.
 * Read regex is used by the update-templates program when scanning and splitting apart the index.html file.
-  * In the case of the read/write regex being Default it means the default behavior will be to write to that file.
+  * In the case of the Write tag or Read regex being Default it means the default behavior will be to write to that file.
+  * In the case of it being blank I have not determined what is appropriate yet.
 
-File | Write regex | Read regex | Purpose
+File | Write tag | Read regex | Purpose
 ----|----|----|----
 index-template.html | Default | Default | This holds the core html that all other files are injected into to create the resulting html file.
 meta.html | `<p>Meta.</p>` |  | Holds the meta information of the site.

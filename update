@@ -67,8 +67,8 @@ inject_html(){
       then
       typeset -n local ref=${inject_file[$i]}
       printf '\n%s %s %s %s\n\n' "Injecting" "$ref" "into" "$loc$mu"
-      cat "$ref"
-      cat "$ref" >> "$loc$mu"
+      "${inject_cmd[i]}" "$ref"
+      "${inject_cmd[i]}" "$ref" >> "$loc$mu"
       printf '\n%s\n' "Injection completed."
       pass=0
       break
@@ -105,13 +105,7 @@ main(){
       fi
       while IFS= read -r line; do ## Read through the file.
         inject_html  ##  Check for html injection and write if needed.
-        if [[ "$line" = *"<p>Template.</p>"* ]] && [[ "$pass" != "0" ]]
-          ## If the line is the Template then write the markdown file has markup.
-          then
-          github-markup "$page"
-          github-markup "$page" >> "$loc$mu"
-          printf '\n%s\n' "Injection completed."
-        elif [[ "$pass" != "0" ]]
+        if [[ "$pass" != "0" ]]
           ## If nothing else wrote a line then this should.
           then
           printf '%s\n' "$line"

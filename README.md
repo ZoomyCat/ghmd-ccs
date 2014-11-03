@@ -1,3 +1,5 @@
+### What is ghmd-ccs?
+
 ghmd-ccs is an unofficial GitHub Markdown to HTML Content Creation System.
 
 ### Dependencies

@@ -24,7 +24,11 @@ Description:    Converts GitHub Markdown to html.
 
 Usage:          ghmd2html <Options>
 
-Options:        -n    name
+Options:
+
+      -m
+
+      -d
 
 Examples:
 
@@ -33,16 +37,14 @@ Examples:
 update_usage="
 Name:           update
 
-Description:    update will find all README.md files and build an appropriate index.html using the README.md as the Main Content. This utilizes a html template structure to create the rest of the page.
+Description:    update will find all .md files and build an appropriate .html using the .md file as the Main Content. This utilizes a html template structure to create the rest of the page.
 
-Usage:          index <Options>
+Usage:          update
 
-Options:        -n name
+Options:        none.
 
 Examples:
 
-    index
-
-    index -n notareadme.md
+    update
 
 "

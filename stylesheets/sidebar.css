@@ -14,8 +14,6 @@
   text-align: center;
 }
 
-a.btn:nth-child(5) {
+a.btn-sub {
   margin-left: 10%
 }
-
-.sidebar > h3:nth-child(1)

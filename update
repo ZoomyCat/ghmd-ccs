@@ -5,7 +5,6 @@
 
 conf=$( find . -name ghmd-ccs.config -type f -print )
 usage=$( find . -name ghmd-ccs.usage -type f -print )
-g2h=$( find . -name ghmd2html -type f -print )
 source "$conf"
 source "$usage"
 

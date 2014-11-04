@@ -1,4 +1,4 @@
-## ghmd-ccs usage documentation.
+## ghmd-ccs documentation.
 
 ### Purpose:
 

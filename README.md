@@ -1,20 +1,35 @@
-### What is ghmd-ccs?
+## ghmd-ccs usage documentation.
 
-ghmd-ccs is an unofficial GitHub Markdown to HTML Content Creation System.
+### Purpose:
 
-### Dependencies
-Name | On GitHub
----- | ----
-      | [ruby](https://github.com/ruby/ruby)
-update | [github-markup](https://github.com/github/markup).
-      | [github-markdown.](http://github.github.com/github-flavored-markdown/)
+  Documentation on how to install, Configure and use ghmd-ccs the unofficial GitHub Markdown to HTML Content Creation System.
 
-### Whats it do?
+### Topics.
 
-This suite of scripts will be used in being able to dynamically generate websites from a template html file and the content will be pulled in by .md files. If the name of the .md file is README the name of html file will be index.html. If the name is anything other than README it will created a index file with a corresponding name, eg `info.md` will become `info.html`.
+#### Useful Links.
 
-The html files created in this process will overwrite the previous versions, No need to backup since your previous version is your previous git commit.
+* [Mastering GitHub Markdown.](https://guides.github.com/features/mastering-markdown/)
 
-### Got any more info?
+#### Installation material.
 
-Check out the [info](http://edge226.github.io/ghmd-ccs/info/) page on installing, configuring and using ghmd-ccs.
+1. [Dependencies](info/deps.html)
+2. [Local Setup.](info/local-setup.html)
+3. [Create a compatible website.](info/create-website.html)
+4. [Configure the website to work with ghmd-ccs.](info/web-setup.html)
+5. [Clone ghmd-ccs into the website.](info/clone-ghmd-ccs.html)
+
+#### Usage.
+* [Updating your website.](info/updating.html)
+
+#### Advanced template and CSS configuration.
+* [Template html file modulation](info/html-mods.html)
+  Will eventually be handled by update-templates.
+* [CSS modulation](info/css-mods.html)
+  I'm not too sure how this will be handled yet.
+
+#### About ghmd-ccs.
+
+* [What is ghmd-ccs](info/whatis.html)
+* [Planned features.](plans/)
+* [Commands and information.](info/ghmd-ccs-info.html)
+* [A bit about templates.](info/about-templates.html)

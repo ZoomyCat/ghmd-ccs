@@ -3,12 +3,14 @@
 
 ## This command will index the website for all .md files that exist merging it with some template html to create a final product.
 
+## These store the variables of where ghmd-ccs.config and where ghmd-ccs.usage are located.
+## The source commands read the config and usage file and load the variables stored within each of them.
 conf=$( find . -name ghmd-ccs.config -type f -print )
 usage=$( find . -name ghmd-ccs.usage -type f -print )
-g2h=$( find . -name ghmd2html -type f -print )
 source "$conf"
 source "$usage"
 
+## This checks the - flags sent to update. The only one available is a help file that states what it does. $update_usage comes from $usage.
 while getopts "h" opt; do
     case "$opt" in
         h)      printf '%s\n' "$update_usage"; exit 0;;
@@ -17,14 +19,16 @@ while getopts "h" opt; do
 done
 
 get_mds(){ ## Find all the .md files and save them to an index_md array.
-  index_md=( $( find . -name "$md" -type f -print ) )
+  index_md=( $( find . -name "$md" -type f -print ) ) ## $md is defined in $conf and contains *.md
 }
 
 get_loc(){ ## Grab the location and strip the .md file off the start then add the proceeding /
+  ## Unset the loc variable if it is already set.
   unset loc
-  local struct="$1"
-  loc=${struct%/*.md}
-  loc="$loc/"
+  local struct="$1" ## Grab the first entry that was passed to this function and set it to a local
+  ##variable called struct. It will always contain a .md file.
+  loc=${struct%/*.md} ## remove the file extension and strip the file name.
+  loc="$loc/" ## Add the forward slash back on because it will be a directory.
 }
 
 get_template(){

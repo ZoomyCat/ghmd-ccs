@@ -70,10 +70,10 @@ inject_html(){
     if [[ "$line" = *"$tag"* ]]
       then
       typeset -n local ref=${inject_file[$i]}
-      printf '\n%s %s %s %s\n\n' "Injecting" "$ref" "into" "$loc$mu"
-      "${inject_cmd[i]}" "$ref"
+      #printf '\n%s %s %s %s\n\n' "Injecting" "$ref" "into" "$loc$mu"
+      #"${inject_cmd[i]}" "$ref"
       "${inject_cmd[i]}" "$ref" >> "$loc$mu"
-      printf '\n%s\n' "Injection completed."
+      #printf '\n%s\n' "Injection completed."
       pass=0
       break
     fi
@@ -105,18 +105,18 @@ main(){
         ## Create a new blank markup file.
         then
         touch "$loc$mu"
-        printf '\n\n%s %s %s %s\n\n' "Now we are writing" "$template" "to" "$loc$mu"
+        #printf '\n\n%s %s %s %s\n\n' "Now we are writing" "$template" "to" "$loc$mu"
       fi
       while IFS= read -r line; do ## Read through the file.
         inject_html  ##  Check for html injection and write if needed.
         if [[ "$pass" != "0" ]]
           ## If nothing else wrote a line then this should.
           then
-          printf '%s\n' "$line"
+          #printf '%s\n' "$line"
           printf '%s\n' "$line" >> "$loc$mu"
         fi
       done < "$template" ## The template file is what is read.
-      printf '\n%s %s %s\n' "Writing of" "$template" "completed."
+      #printf '\n%s %s %s\n' "Writing of" "$template" "completed."
     done
     exit 0
 }

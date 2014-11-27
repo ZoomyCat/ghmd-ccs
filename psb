@@ -6,6 +6,16 @@
 
 source ./config/psb.conf
 
+update_pages(){
+  if [[ -f ./ghmd-ccs/update ]]
+  then
+    ./ghmd-ccs/update
+  elif [[ -f ./update ]]
+  then
+    ./update
+  fi
+}
+
 for subdir in "${sub_sites[@]}"
 do
   cd "$site_dir/$subdir" || exit
@@ -16,7 +26,7 @@ do
     continue
     rsync -rvp "$site_dir/$main_site/template/$file" "$site_dir/$subdir/template/"
   done
-  ./ghmd-ccs/update
+  update_pages
   git commit -a -m "Updated sidebar menu content."
   git push origin gh-pages
   git checkout "$branch"

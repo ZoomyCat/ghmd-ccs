@@ -21,4 +21,3 @@ do
   git push origin gh-pages
   git checkout "$branch"
 done
-}

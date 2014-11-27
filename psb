@@ -18,6 +18,7 @@ update_pages(){
 
 for subdir in "${sub_sites[@]}"
 do
+  printf '%s %s%s%s\n' "Updating " "$site_dir" "/" "$subdir"
   cd "$site_dir/$subdir" || exit
   branch=$(git symbolic-ref --short HEAD)
   git checkout gh-pages

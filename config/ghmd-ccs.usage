@@ -17,20 +17,18 @@ Examples:
 
 "
 
-ghmd2html_usage="
-Name:           ghmd2html
+psb_usage="
+Name:           psb
 
-Description:    Converts GitHub Markdown to html.
+Description:    Pushes sidebar changes from a main website to sub websites.
 
-Usage:          ghmd2html <Options>
+Usage:          psb
 
 Options:
 
-      -m
-
-      -d
-
 Examples:
+
+psb
 
 "
 

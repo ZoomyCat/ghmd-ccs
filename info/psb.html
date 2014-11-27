@@ -160,7 +160,16 @@
 
 <p>The program is extremely simple, It copies files from a main website template directory into sub website template directories.</p>
 
-<p>The program will copy $site_dir/$main_site/template/$update_files into $site_dir/$sub_sites/template/ using rsync.</p>
+<ol>
+<li>First it grabs the current branch.</li>
+<li>It goes into the sub_site location.</li>
+<li>Switches to the gh-pages branch.</li>
+<li>Copies the new sidebar if there is one using rsync.</li>
+<li>Updates all html files with the update command.</li>
+<li>Add and Commit&#39;s the files with a generic &quot;pushed new menu&quot; message.</li>
+<li>Pushes the changes to github.</li>
+<li>Switches back to the previously checked out branch.</li>
+</ol>
 
       </section>
     </div>

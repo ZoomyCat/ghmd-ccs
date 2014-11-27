@@ -26,4 +26,11 @@ update_files | Array | For my usage this will only contain sidebar.* but could c
 
 The program is extremely simple, It copies files from a main website template directory into sub website template directories.
 
-The program will copy $site_dir/$main_site/template/$update_files into $site_dir/$sub_sites/template/ using rsync.
+1. First it grabs the current branch.
+2. It goes into the sub_site location.
+3. Switches to the gh-pages branch.
+4. Copies the new sidebar if there is one using rsync.
+5. Updates all html files with the update command.
+6. Add and Commit's the files with a generic "pushed new menu" message.
+7. Pushes the changes to github.
+8. Switches back to the previously checked out branch.

@@ -26,7 +26,6 @@ do
   git checkout gh-pages
   for file in "${update_files[@]}"
   do
-    continue
     rsync -rvp "$site_dir/$main_site/template/$file" "$site_dir/$subdir/template/"
   done
   update_pages

@@ -11,7 +11,7 @@ update_pages(){
     then
     chmod a+x ./ghmd-ccs/update
     ./update
-  elif [[ -f ./ghmd-ccs/update ]]
+  elif [[ -d ./ghmd-ccs ]]
   then
     chmod a+x ./ghmd-ccs/update
     ./ghmd-ccs/update

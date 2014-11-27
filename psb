@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+##Created by Edward "edge226" Tunnah.
+
+## psb pushes the sidebar from a main website to sub websites. It is capable of pushing any template html.
+## The only template file that needs to be upgraded on a consistant basis is the sidebar.
+
+source ./config/psb.conf
+
+for subdir in "${sub_sites[@]}"
+do
+  cd "$site_dir/$subdir" || exit
+  branch=$(git symbolic-ref --short HEAD)
+  git checkout gh-pages
+  for file in "${update_files[@]}"
+  do
+    continue
+    rsync -rvp "$site_dir/$main_site/template/$file" "$site_dir/$subdir/template/"
+  done
+  git checkout "$branch"
+done
+}

@@ -7,12 +7,12 @@
 source ./config/psb.conf
 
 update_pages(){
-  if ( ! -d ./ghmd-ccs )
+  if [[ ! -d ./ghmd-ccs ]]
     then
     chmod a+x ./ghmd-ccs/update
     ./update
   fi
-  if ( -d ./ghmd-ccs )
+  if [[ -d ./ghmd-ccs ]]
   then
     chmod a+x ./ghmd-ccs/update
     ./ghmd-ccs/update
@@ -27,7 +27,10 @@ do
   git checkout gh-pages
   for file in "${update_files[@]}"
   do
+    if [[ -d "$site_dir/$subdir/template/" ]]
+      then
     rsync -rvp "$site_dir/$main_site/template/$file" "$site_dir/$subdir/template/"
+  fi
   done
   update_pages
   git commit -a -m "Updated sidebar menu content."

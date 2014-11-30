@@ -7,12 +7,12 @@
 source ./config/psb.conf
 
 update_pages(){
-  if [[ ! -d ./ghmd-ccs ]]
+  if ( ! -d ./ghmd-ccs )
     then
     chmod a+x ./ghmd-ccs/update
     ./update
   fi
-  if [[ -d ./ghmd-ccs ]]
+  if ( -d ./ghmd-ccs )
   then
     chmod a+x ./ghmd-ccs/update
     ./ghmd-ccs/update

@@ -21,19 +21,19 @@ update_pages(){
 
 for subdir in "${sub_sites[@]}"
 do
-  printf '\n%s %s%s%s\n' "Updating " "$site_dir" "/" "$subdir"
-  cd "$site_dir/$subdir" || exit
-  branch=$(git symbolic-ref --short HEAD)
-  git checkout gh-pages
-  for file in "${update_files[@]}"
-  do
-    if [ -d "$site_dir/$subdir/template/" ]
-      then
-    rsync -rvp "$site_dir/$main_site/template/$file" "$site_dir/$subdir/template/"
+  if [ -d "$site_dir/$subdir/template/" ]
+    then
+    printf '\n%s %s%s%s\n' "Updating " "$site_dir" "/" "$subdir"
+    cd "$site_dir/$subdir" || exit
+    branch=$(git symbolic-ref --short HEAD)
+    git checkout gh-pages
+    for file in "${update_files[@]}"
+    do
+      rsync -rvp "$site_dir/$main_site/template/$file" "$site_dir/$subdir/template/"
+    done
+    update_pages
+    git commit -a -m "Updated sidebar menu content."
+    git push origin gh-pages
+    git checkout "$branch"
   fi
-  done
-  update_pages
-  git commit -a -m "Updated sidebar menu content."
-  git push origin gh-pages
-  git checkout "$branch"
 done
